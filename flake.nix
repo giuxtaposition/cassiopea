@@ -15,22 +15,21 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    packages.${system}.default = astal.lib.mkLuaPackage {
-      inherit pkgs;
-      name = "cassiopea"; # how to name the executable
-      src = ./.; # should contain init.lua
+    packages.${system} = {
+      default = self.packages.${system}.cassiopea;
+      cassiopea = pkgs.callPackage ./nix/package.nix {
+        inherit
+          self
+          astal
+          system
+          pkgs
+          ;
+      };
+    };
 
-      # add extra glib packages or binaries
-      extraPackages = [
-        astal.packages.${system}.battery
-        astal.packages.${system}.mpris
-        astal.packages.${system}.wireplumber
-        astal.packages.${system}.network
-        astal.packages.${system}.tray
-        astal.packages.${system}.io
-        astal.packages.${system}.apps
-        pkgs.dart-sass
-      ];
+    homeManagerModules = {
+      default = self.homeManagerModules.cassiopea;
+      cassiopea = import ./nix/hm-module.nix self;
     };
   };
 }

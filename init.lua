@@ -1,9 +1,9 @@
 local astal = require("astal")
 local App = require("astal.gtk3.app")
 
-local Bar = require("widgets.bar")
-local Launcher = require("widgets.launcher")
-local src = require("lib.path").src
+local Bar = require("lua.widgets.bar")
+local Launcher = require("lua.widgets.launcher")
+local src = require("lua.lib.path").src
 
 local scss = src("scss/style.scss")
 local css = "/tmp/style.css"

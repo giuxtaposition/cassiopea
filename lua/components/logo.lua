@@ -1,5 +1,5 @@
 local Widget = require("astal.gtk3.widget")
-local windows = require("lib.windows")
+local windows = require("lua.lib.windows")
 
 local function Logo()
 	return Widget.Button({

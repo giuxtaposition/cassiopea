@@ -1,6 +1,6 @@
 local astal = require("astal")
 local Widget = require("astal.gtk3.widget")
-local Logo = require("components.logo")
+local Logo = require("lua.components.logo")
 
 return function(gdkmonitor)
 	local WindowAnchor = astal.require("Astal", "3.0").WindowAnchor

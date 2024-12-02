@@ -3,11 +3,11 @@ local bind = astal.bind
 local App = require("astal.gtk3.app")
 local Widget = require("astal.gtk3.widget")
 local Gdk = astal.require("Gdk", "3.0")
-local windows = require("lib.windows")
 local Variable = require("astal").Variable
 local Apps = require("lgi").require("AstalApps")
-local table = require("lib.table")
 local Astal = astal.require("Astal", "3.0")
+local windows = require("lua.lib.windows")
+local table = require("lua.lib.table")
 
 local MAX_ITEMS = 8
 
