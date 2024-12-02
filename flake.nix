@@ -27,6 +27,8 @@
         astal.packages.${system}.wireplumber
         astal.packages.${system}.network
         astal.packages.${system}.tray
+        astal.packages.${system}.io
+        astal.packages.${system}.apps
         pkgs.dart-sass
       ];
     };

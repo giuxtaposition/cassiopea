@@ -1,9 +1,9 @@
-.launcher {
+window#launcher {
   @include window;
   margin-top: 0.5rem;
   margin-left: 0.5rem;
 
-  .search {
+  .search-bar {
     background-color: $surfaceVariant;
     border-radius: 1rem;
     padding: 0.75rem;
@@ -13,10 +13,6 @@
       margin-left: 1rem;
       background-color: transparent;
       border: none;
-    }
-
-    .icon {
-      font-size: 1.5rem;
     }
   }
 
@@ -29,12 +25,16 @@
     border: none;
 
     &:hover {
-      background-color: mix($surface, $onSurface, 70%);
+      background-color: mix($surface, $onSurface, 90%);
     }
 
-    .title {
+    label {
       margin-left: 0.5rem;
       font-size: 1.1rem;
     }
+  }
+
+  icon {
+    font-size: 3rem;
   }
 }
