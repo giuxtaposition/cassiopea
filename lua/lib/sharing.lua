@@ -24,30 +24,33 @@ M.mic_recording = Variable(false):poll(1000, 'bash -c "pactl -f json list source
 	return #sources > 0
 end)
 
---FIXME: it works but astal gives error when empty output
-M.webcam_recording = Variable(false):poll(1000, 'bash -c "lsof /dev/video0"', function(result)
-	local is_recording = false
-	if not result then
+M.webcam_recording = Variable(false):poll(
+	1000,
+	'bash -c "lsof /dev/video0 | awk \'{print; found=1} END {if (!found) print \\"No output\\"}\'"',
+	function(result)
+		local is_recording = false
+		if result == "No output" then
+			return is_recording
+		end
+
+		local lines = split(result, "\n")
+		local processes = {}
+		for i = 2, #lines do
+			local parts = split(lines[i], "%s+")
+			if #parts > 1 then
+				table.insert(processes, parts[1])
+			end
+		end
+
+		for _, process in ipairs(processes) do
+			if process ~= "wireplumb" and process ~= "pipewire" then
+				is_recording = true
+				break
+			end
+		end
+
 		return is_recording
 	end
-
-	local lines = split(result, "\n")
-	local processes = {}
-	for i = 2, #lines do
-		local parts = split(lines[i], "%s+")
-		if #parts > 1 then
-			table.insert(processes, parts[1])
-		end
-	end
-
-	for _, process in ipairs(processes) do
-		if process ~= "wireplumb" and process ~= "pipewire" then
-			is_recording = true
-			break
-		end
-	end
-
-	return is_recording
-end)
+)
 
 return M
