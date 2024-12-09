@@ -27,15 +27,19 @@
       };
     };
 
-    devShells.default = pkgs.mkShell {
-      name = "my-devshell";
-
-      # Use the same buildInputs as the package
-      buildInputs =
+    devShells.${system}.default = pkgs.mkShell {
+      name = "cassiopea-shell";
+      buildInputs = with pkgs;
         [
-          self.packages.default
+          inotify-tools
         ]
-        ++ [pkgs.git pkgs.curl]; # Add extra tools for devshell if needed
+        ++ (self.packages.${system}.cassiopea.buildInputs)
+        ++ (self.packages.${system}.cassiopea.nativeBuildInputs);
+
+      # Optionally, include any environment variables or other settings
+      shellHook = ''
+        echo "Welcome to the Cassiopea development shell!"
+      '';
     };
 
     homeManagerModules = {
