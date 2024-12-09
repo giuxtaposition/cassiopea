@@ -1,3 +1,4 @@
+---@class cassiopea.lib.table
 local M = {}
 
 ---@generic T, R
@@ -12,10 +13,13 @@ function M.map(arr, func)
 	return new_arr
 end
 
-function M.slice(tbl, first, last, step)
+---@param tbl table
+---@param first integer
+---@param last? integer
+function M.slice(tbl, first, last)
 	local sliced = {}
 
-	for i = first or 1, last or #tbl, step or 1 do
+	for i = first, last or #tbl, 1 do
 		sliced[#sliced + 1] = tbl[i]
 	end
 

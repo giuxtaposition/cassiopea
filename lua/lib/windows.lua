@@ -1,5 +1,6 @@
 local App = require("astal.gtk3.app")
 
+---@class cassiopea.lib.windows
 local M = {
 	window_name = {
 		launcher = "launcher",

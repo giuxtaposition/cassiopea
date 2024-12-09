@@ -6,13 +6,11 @@ local Gdk = astal.require("Gdk", "3.0")
 local Variable = require("astal").Variable
 local Apps = require("lgi").require("AstalApps")
 local Astal = astal.require("Astal", "3.0")
-local windows = require("lua.lib.windows")
-local table = require("lua.lib.table")
 
 local MAX_ITEMS = 8
 
 local function hide()
-	windows.hide(windows.window_name.launcher)
+	Cassiopea.windows.hide(Cassiopea.windows.window_name.launcher)
 end
 
 return function()
@@ -20,7 +18,7 @@ return function()
 	local text = Variable("")
 
 	local list = text(function(value)
-		return table.slice(apps:fuzzy_query(value), 0, MAX_ITEMS)
+		return Cassiopea.table.slice(apps:fuzzy_query(value), 0, MAX_ITEMS)
 	end)
 
 	local on_enter = function()
@@ -72,7 +70,7 @@ return function()
 	end
 
 	return Widget.Window({
-		name = windows.window_name.launcher,
+		name = Cassiopea.windows.window_name.launcher,
 		visible = false,
 		anchor = Astal.WindowAnchor.TOP + Astal.WindowAnchor.LEFT,
 		exclusivity = Astal.Exclusivity.EXCLUSIVE,
@@ -107,7 +105,7 @@ return function()
 					spacing = 6,
 					vertical = true,
 					bind(list, "items"):as(function(items)
-						return table.map(items, function(item)
+						return Cassiopea.table.map(items, function(item)
 							return AppButton(item)
 						end)
 					end),

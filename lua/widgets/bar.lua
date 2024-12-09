@@ -1,12 +1,17 @@
 local astal = require("astal")
 local Widget = require("astal.gtk3.widget")
+local window_name = Cassiopea.windows.window_name.bar
+
 local Logo = require("lua.components.logo")
+local ScreenSharingIndicator = require("lua.components.sharing").ScreenSharingIndicator
+local MicRecordingIndicator = require("lua.components.sharing").MicRecordingIndicator
+local WebcamRecordingIndicator = require("lua.components.sharing").WebcamRecordingIndicator
 
 return function(gdkmonitor)
 	local WindowAnchor = astal.require("Astal", "3.0").WindowAnchor
 
 	return Widget.Window({
-		class_name = "bar",
+		name = window_name,
 		hexpand = true,
 		gdkmonitor = gdkmonitor,
 		anchor = WindowAnchor.TOP + WindowAnchor.LEFT + WindowAnchor.RIGHT,
@@ -18,7 +23,6 @@ return function(gdkmonitor)
 				spacing = 12,
 				Logo(),
 				-- Workspaces(),
-				-- FocusedClient(),
 			}),
 			Widget.Box({
 				Widget.Label({
@@ -27,9 +31,9 @@ return function(gdkmonitor)
 			}),
 			Widget.Box({
 				halign = "END",
-				Widget.Label({
-					label = "",
-				}),
+				ScreenSharingIndicator(),
+				MicRecordingIndicator(),
+				WebcamRecordingIndicator(),
 			}),
 		}),
 	})

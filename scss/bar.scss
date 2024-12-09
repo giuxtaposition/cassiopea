@@ -1,9 +1,9 @@
-.bar {
+window#bar {
   @include unset($rec: true);
   @include window;
 
   min-height: 2.25rem;
-  padding: 0.7rem 1rem;
+  padding: 1rem;
   margin-top: 0.6rem;
 
   tooltip {

@@ -27,6 +27,17 @@
       };
     };
 
+    devShells.default = pkgs.mkShell {
+      name = "my-devshell";
+
+      # Use the same buildInputs as the package
+      buildInputs =
+        [
+          self.packages.default
+        ]
+        ++ [pkgs.git pkgs.curl]; # Add extra tools for devshell if needed
+    };
+
     homeManagerModules = {
       default = self.homeManagerModules.cassiopea;
       cassiopea = import ./nix/hm-module.nix self;
