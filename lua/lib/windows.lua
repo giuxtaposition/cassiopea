@@ -5,8 +5,17 @@ local M = {
 	window_name = {
 		launcher = "launcher",
 		bar = "bar",
+		systray = "systray",
 	},
 }
+
+M.toggle = function(window_name)
+	if App:get_window(window_name).visible then
+		M.hide(window_name)
+	else
+		M.show(window_name)
+	end
+end
 
 ---@param window_name string
 M.show = function(window_name)

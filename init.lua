@@ -4,6 +4,7 @@ local App = require("astal.gtk3.app")
 
 local Bar = require("lua.widgets.bar")
 local Launcher = require("lua.widgets.launcher")
+local Systray = require("lua.widgets.systray")
 
 local scss = Cassiopea.path.src("scss/style.scss")
 local css = "/tmp/style.css"
@@ -22,5 +23,6 @@ App:start({
 			Bar(mon)
 		end
 		Launcher()
+		Systray()
 	end,
 })

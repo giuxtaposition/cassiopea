@@ -1,16 +1,7 @@
-local Widget = require("astal.gtk3.widget")
-local windows = require("lua.lib.windows")
+local ToggleWindowButton = require("lua.components.toggle_window_button")
 
 local function Logo()
-	return Widget.Button({
-		class_name = "logo",
-		on_click_release = function()
-			windows.show(windows.window_name.launcher)
-		end,
-		Widget.Label({
-			label = "",
-		}),
-	})
+	return ToggleWindowButton("", "logo", Cassiopea.windows.window_name.launcher)
 end
 
 return Logo
