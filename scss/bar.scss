@@ -1,57 +1,63 @@
-window#bar {
-  @include unset($rec: true);
-  @include window;
+@use "sass:color";
+@use "colors";
+@use "lib";
 
-  min-height: 2.25rem;
-  padding: 1rem;
-  margin-top: 0.6rem;
+window#bar {
+  @include lib.unset($rec: true);
+
+  & {
+    @include lib.window;
+    min-height: 2.25rem;
+    padding: 1rem;
+    margin-top: 0.6rem;
+  }
 
   tooltip {
-    background-color: $surfaceVariant;
-    color: $onSurface;
+    background-color: colors.$surfaceVariant;
+    color: colors.$onSurface;
     padding: 1rem;
     border-radius: 1rem;
   }
 
   .logo {
     font-size: 1.5rem;
-    background-color: $primary;
-    color: $surface;
+    background-color: colors.$primary;
+    color: colors.$surface;
     border-radius: 2rem;
     padding: 0 1rem 0 0.5rem;
     transition: 0.3s;
 
     &:hover {
-      background-color: mix($primary, $onSurface, 70%);
+      background-color: color.mix(colors.$primary, colors.$onSurface, 70%);
     }
   }
 
   .workspaces {
     border-radius: 1rem;
     padding: 0.5rem;
-    background-color: $surfaceVariant;
+    background-color: colors.$surfaceVariant;
 
     .workspace {
       border-radius: 50%;
-      background-color: $onPrimary;
+      background-color: colors.$onPrimary;
       margin: 0 0.25rem;
       padding: 0rem 0.7rem;
       transition: 0.3s;
 
       &.active {
         border-radius: 1rem;
-        background-color: $primary;
+        background-color: colors.$primary;
         padding: 0 2rem;
       }
 
       &.empty {
-        background-color: $overlay1;
+        background-color: colors.$overlay1;
       }
 
       &:hover {
-        background-color: mix($onPrimary, $onSurface, 70%);
+        background-color: color.mix(colors.$onPrimary, colors.$onSurface, 70%);
         &.current {
-          background-color: mix($primary, $onSurface, 70%);
+          background-color: color.mix(colors.$primary, colors.$onSurface, 70%);
         }
       }
     }
@@ -65,7 +71,7 @@ window#bar {
     font-size: 1.5rem;
 
     &:hover {
-      background-color: mix($surface, $onSurface, 70%);
+      background-color: color.mix(colors.$surface, colors.$onSurface, 70%);
     }
   }
 
@@ -78,12 +84,12 @@ window#bar {
     font-weight: bold;
 
     &:hover {
-      background-color: mix($surface, $onSurface, 70%);
+      background-color: color.mix(colors.$surface, colors.$onSurface, 70%);
     }
   }
 
   .indicator {
-    background-color: $surfaceVariant;
+    background-color: colors.$surfaceVariant;
     border-radius: 1rem;
     padding: 0 0.5rem;
     margin: 0 0.5rem;
@@ -97,7 +103,11 @@ window#bar {
     }
 
     &:hover {
-      background-color: mix($surfaceVariant, $onSurfaceVariant, 70%);
+      background-color: color.mix(
+        colors.$surfaceVariant,
+        colors.$onSurfaceVariant,
+        70%
+      );
     }
 
     .clock {
@@ -114,7 +124,7 @@ window#bar {
     font-size: 1.3rem;
     margin-right: 0.5rem;
     margin-left: 0.5rem;
-    color: $onPrimary;
+    color: colors.$onPrimary;
 
     animation: blink 1.5s ease-in-out infinite;
   }

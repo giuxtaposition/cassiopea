@@ -13,6 +13,11 @@ _lua() {
   lua init.lua &
 }
 
+_scss() {
+  sass "$WORKDIR"/scss/style.scss /tmp/style.css
+  _lua
+}
+
 _lua
 
 inotifywait --quiet --monitor --event create,modify,delete --recursive $WORKDIR | while read DIRECTORY EVENT FILE; do
@@ -21,6 +26,10 @@ inotifywait --quiet --monitor --event create,modify,delete --recursive $WORKDIR 
   lua)
     echo "reload lua..."
     _lua
+    ;;
+  scss)
+    echo "reload scss..."
+    _scss
     ;;
   esac
 done

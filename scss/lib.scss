@@ -1,9 +1,11 @@
+@use "colors";
+
 @mixin window {
-  background-color: $crust;
+  background-color: colors.$crust;
   border-radius: 1rem;
   padding: 1rem;
-  color: $text;
-  box-shadow: 0 0 4px 2px $shadow;
+  color: colors.$text;
+  box-shadow: 0 0 4px 2px colors.$shadow;
 }
 
 @mixin unset($rec: false) {

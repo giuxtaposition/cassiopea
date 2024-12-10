@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "colors";
+
 window.notification-popups box.notifications {
   padding: 0.5em;
 
@@ -11,7 +14,7 @@ window.notification-popups box.notifications {
     font-size: 58px;
     /* to center the icon */
     margin: 5px;
-    color: $fg;
+    color: colors.$fg;
   }
 
   .icon box {
@@ -25,8 +28,8 @@ window.notification-popups box.notifications {
     border-radius: 11px;
     padding: 1em;
     margin: 0.5em;
-    border: 1px solid $onPrimary;
-    background-color: $bg;
+    border: 1px solid colors.$onPrimary;
+    background-color: colors.$bg;
   }
 
   .notification.critical {
@@ -34,24 +37,24 @@ window.notification-popups box.notifications {
   }
 
   .title {
-    color: $text;
+    color: colors.$text;
     font-size: 1.4em;
   }
 
   .body {
-    color: $onSurfaceVariant;
+    color: colors.$onSurfaceVariant;
   }
 
   .actions .action-button {
     margin: 0 0.4em;
     margin-top: 0.8em;
-    background-color: $surfaceVariant;
-    color: $onSurface;
+    background-color: colors.$surfaceVariant;
+    color: colors.$onSurface;
     border-radius: 1.5rem;
     font-size: 1.05rem;
 
     &:hover {
-      background-color: mix($surfaceVariant, $onSurfaceVariant, 70%);
+      background-color: color.mix(colors.$surfaceVariant, colors.$onSurfaceVariant, 70%);
     }
   }
 

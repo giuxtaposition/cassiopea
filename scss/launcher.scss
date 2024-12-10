@@ -1,10 +1,14 @@
+@use "sass:color";
+@use "colors";
+@use "lib";
+
 window#launcher {
-  @include window;
+  @include lib.window;
   margin-top: 0.5rem;
   margin-left: 0.5rem;
 
   .search-bar {
-    background-color: $surfaceVariant;
+    background-color: colors.$surfaceVariant;
     border-radius: 1rem;
     padding: 0.75rem;
 
@@ -17,7 +21,7 @@ window#launcher {
   }
 
   .item {
-    color: $onSurface;
+    color: colors.$onSurface;
     padding: 0.5rem;
     border-radius: 1rem;
     transition: 0.3s;
@@ -25,7 +29,7 @@ window#launcher {
     border: none;
 
     &:hover {
-      background-color: mix($surface, $onSurface, 90%);
+      background-color: color.mix(colors.$surface, colors.$onSurface, 90%);
     }
 
     label {

@@ -1,10 +1,15 @@
-.quick-settings {
-  @include unset($rec: true);
-  @include window;
+@use "sass:color";
+@use "colors";
+@use "lib";
 
-  margin-right: 1rem;
-  margin-top: 1rem;
-  min-width: 10px;
+.quick-settings {
+  @include lib.unset($rec: true);
+  & {
+    @include lib.window;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    min-width: 10px;
+  }
 
   .avatar {
     background-repeat: no-repeat;
@@ -16,8 +21,8 @@
   }
 
   .sign-out {
-    background-color: $surfaceVariant;
-    color: $onSurface;
+    background-color: colors.$surfaceVariant;
+    color: colors.$onSurface;
     border-radius: 1rem;
     padding: 0 1rem;
     margin: 0.35rem 0;
@@ -26,7 +31,11 @@
     font-weight: bold;
 
     &:hover {
-      background-color: mix($surfaceVariant, $onSurfaceVariant, 70%);
+      background-color: color.mix(
+        colors.$surfaceVariant,
+        colors.$onSurfaceVariant,
+        70%
+      );
     }
   }
 
@@ -48,8 +57,8 @@
 
   .toggle-button {
     transition: 500ms;
-    background-color: $surfaceVariant;
-    color: $onSurface;
+    background-color: colors.$surfaceVariant;
+    color: colors.$onSurface;
     border-radius: 1.5rem;
     padding: 0.75rem;
     font-size: 1.05rem;
@@ -57,15 +66,19 @@
     font-weight: bold;
 
     &:hover {
-      background-color: mix($surfaceVariant, $onSurfaceVariant, 70%);
+      background-color: color.mix(
+        colors.$surfaceVariant,
+        colors.$onSurfaceVariant,
+        70%
+      );
     }
 
     &.active {
-      background-color: $primary;
-      color: $surface;
+      background-color: colors.$primary;
+      color: colors.$surface;
     }
     &.active:hover {
-      background-color: mix($primary, $onSurface, 70%);
+      background-color: color.mix(colors.$primary, colors.$onSurface, 70%);
     }
 
     .icon {
@@ -79,11 +92,11 @@
 
     .state {
       font-size: 0.9rem;
-      color: $onSurfaceVariant;
+      color: colors.$onSurfaceVariant;
     }
 
     &.active .state {
-      color: $surfaceVariant;
+      color: colors.$surfaceVariant;
     }
   }
 
@@ -92,11 +105,11 @@
     font-size: 1.5rem;
 
     &.less {
-      color: $onSurface;
+      color: colors.$onSurface;
     }
 
     &.more {
-      color: $surface;
+      color: colors.$surface;
     }
   }
 
@@ -110,18 +123,18 @@
     &.muted {
       highlight,
       progress {
-        background-color: $surfaceVariant;
+        background-color: colors.$surfaceVariant;
       }
     }
 
     trough {
-      background-color: $surfaceVariant;
+      background-color: colors.$surfaceVariant;
       border-radius: 1rem;
       min-height: 2.25rem;
 
       highlight,
       progress {
-        background-color: $primary;
+        background-color: colors.$primary;
         border-radius: 1rem;
         min-height: 2.25rem;
       }
@@ -129,8 +142,8 @@
   }
 
   .volume-mute {
-    background-color: $surfaceVariant;
-    color: $onSurface;
+    background-color: colors.$surfaceVariant;
+    color: colors.$onSurface;
     margin-left: 0.5rem;
     font-size: 1.5rem;
     min-width: 2.25rem;
@@ -139,23 +152,27 @@
     padding: 0 0.3rem 0 0.2rem;
 
     &:hover {
-      background-color: mix($surfaceVariant, $onSurfaceVariant, 70%);
+      background-color: color.mix(
+        colors.$surfaceVariant,
+        colors.$onSurfaceVariant,
+        70%
+      );
     }
 
     &.active {
-      background-color: $primary;
-      color: $surface;
+      background-color: colors.$primary;
+      color: colors.$surface;
     }
 
     &.active:hover {
-      background-color: mix($primary, $onSurface, 70%);
+      background-color: color.mix(colors.$primary, colors.$onSurface, 70%);
     }
   }
 
   .player {
     padding: 10px;
     min-width: 350px;
-    background-color: $surfaceVariant;
+    background-color: colors.$surfaceVariant;
     border-radius: 5px;
   }
 
@@ -174,7 +191,7 @@
 
   .player .artist {
     font-size: 1.1em;
-    color: $text;
+    color: colors.$text;
   }
 
   .player scale.position {
@@ -187,7 +204,7 @@
   }
 
   .player scale.position highlight {
-    background-color: $primary;
+    background-color: colors.$primary;
   }
 
   .player scale.position slider {
