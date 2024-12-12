@@ -12,6 +12,7 @@ local M = {
 	table = require("lua.lib.table"),
 	windows = require("lua.lib.windows"),
 	sharing = require("lua.lib.sharing"),
+	sway = require("lua.lib.sway"),
 }
 
 return M

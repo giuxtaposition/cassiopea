@@ -13,6 +13,21 @@ function M.map(arr, func)
 	return new_arr
 end
 
+---@generic T
+---@param arr T[]
+---@param condition fun(T): boolean
+function M.find(arr, condition)
+	for _, value in ipairs(arr) do
+		-- Cassiopea.debug.print_table(value)
+		-- print(condition(value))
+
+		if condition(value) then
+			return value
+		end
+	end
+	return nil
+end
+
 ---@param tbl table
 ---@param first integer
 ---@param last? integer
@@ -24,6 +39,17 @@ function M.slice(tbl, first, last)
 	end
 
 	return sliced
+end
+
+---@param tbl table
+---@param value any
+function M.containsValue(tbl, value)
+	for _, v in ipairs(tbl) do
+		if v == value then
+			return true
+		end
+	end
+	return false
 end
 
 return M

@@ -7,6 +7,7 @@ local ScreenSharingIndicator = require("lua.components.sharing").ScreenSharingIn
 local MicRecordingIndicator = require("lua.components.sharing").MicRecordingIndicator
 local WebcamRecordingIndicator = require("lua.components.sharing").WebcamRecordingIndicator
 local Tray = require("lua.components.tray")
+local Keyboard = require("lua.components.keyboard")
 
 return function(gdkmonitor)
 	local WindowAnchor = astal.require("Astal", "3.0").WindowAnchor
@@ -36,6 +37,7 @@ return function(gdkmonitor)
 				MicRecordingIndicator(),
 				WebcamRecordingIndicator(),
 				Tray(),
+				Keyboard(),
 			}),
 		}),
 	})
