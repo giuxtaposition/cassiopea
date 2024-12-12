@@ -1,11 +1,8 @@
 {
   astal,
   pkgs,
-  lib,
   system,
   self,
-  stdenvNoCC,
-  makeWrapper,
   nix-gitignore,
 }:
 astal.lib.mkLuaPackage {
