@@ -2,7 +2,7 @@
 @use "colors";
 @use "lib";
 
-.powermenu {
+.power-menu {
   @include lib.window;
 
   min-width: 800px;
@@ -12,7 +12,7 @@
   padding-top: 3rem;
   padding-bottom: 3rem;
 
-  .powermenu-entry {
+  .power-menu-entry {
     margin: 0 0.5rem;
     button {
       background-color: colors.$surfaceVariant;
@@ -22,7 +22,11 @@
       font-size: 4rem;
 
       &:hover {
-        background-color: color.mix(colors.$surfaceVariant, colors.$onSurfaceVariant, 70%);
+        background-color: color.mix(
+          colors.$surfaceVariant,
+          colors.$onSurfaceVariant,
+          70%
+        );
       }
     }
     .label {

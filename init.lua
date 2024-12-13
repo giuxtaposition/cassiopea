@@ -6,6 +6,7 @@ local Bar = require("lua.widgets.bar")
 local Launcher = require("lua.widgets.launcher")
 local Systray = require("lua.widgets.systray")
 local QuickSettings = require("lua.widgets.quick_settings")
+local PowerMenu = require("lua.widgets.power_menu")
 
 local scss = Cassiopea.path.cwd("scss/style.scss")
 local css = "/tmp/style.css"
@@ -26,5 +27,6 @@ App:start({
 		Launcher()
 		Systray()
 		QuickSettings()
+		PowerMenu()
 	end,
 })
