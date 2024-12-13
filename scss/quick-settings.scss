@@ -175,7 +175,7 @@ window#quick-settings {
     border-radius: 5px;
   }
 
-  .player .img {
+  .player .cover-art {
     min-width: 100px;
     min-height: 100px;
     background-size: cover;
@@ -214,9 +214,5 @@ window#quick-settings {
     min-height: 1em;
     min-width: 1em;
     padding: 0.3em;
-  }
-
-  .player button.play-pause {
-    margin: 0 0.3em;
   }
 }

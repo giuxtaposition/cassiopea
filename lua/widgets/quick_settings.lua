@@ -11,6 +11,7 @@ local ToggleBluetooth = require("lua.components.bluetooth").ToggleBluetooth
 local ToggleDoNotDisturb = require("lua.components.do_not_disturb").ToggleDoNotDisturb
 local ToggleEyeShield = require("lua.components.eye_shield").ToggleEyeShield
 local VolumeSliderAndMuteButton = require("lua.components.volume").VolumeSliderAndMuteButton
+local Player = require("lua.components.player").Player
 
 return function()
 	return Widget.Window({
@@ -58,6 +59,7 @@ return function()
 			}),
 			VolumeSliderAndMuteButton("speaker"),
 			VolumeSliderAndMuteButton("microphone"),
+			Player(),
 		}),
 	})
 end
