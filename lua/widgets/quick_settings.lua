@@ -10,6 +10,7 @@ local ToggleNetwork = require("lua.components.network").ToggleNetwork
 local ToggleBluetooth = require("lua.components.bluetooth").ToggleBluetooth
 local ToggleDoNotDisturb = require("lua.components.do_not_disturb").ToggleDoNotDisturb
 local ToggleEyeShield = require("lua.components.eye_shield").ToggleEyeShield
+local VolumeSliderAndMuteButton = require("lua.components.volume").VolumeSliderAndMuteButton
 
 return function()
 	return Widget.Window({
@@ -30,6 +31,7 @@ return function()
 		Widget.Box({
 			class_name = "quick-settings",
 			vertical = true,
+			spacing = 16,
 			Widget.Box({
 				hexpand = true,
 				class_name = "header", --TODO:rename
@@ -54,6 +56,8 @@ return function()
 				ToggleDoNotDisturb(),
 				ToggleEyeShield(),
 			}),
+			VolumeSliderAndMuteButton("speaker"),
+			VolumeSliderAndMuteButton("microphone"),
 		}),
 	})
 end
