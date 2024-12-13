@@ -6,6 +6,8 @@ local M = {
 		launcher = "launcher",
 		bar = "bar",
 		systray = "systray",
+		quick_settings = "quick-settings",
+		power_menu = "power_menu",
 	},
 }
 

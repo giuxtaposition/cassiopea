@@ -1,23 +1,11 @@
 local Widget = require("astal.gtk3.widget")
 local astal = require("astal")
 local Wp = astal.require("AstalWp")
-local Network = astal.require("AstalNetwork")
 local Battery = astal.require("AstalBattery")
-local GLib = astal.require("GLib")
 local bind = astal.bind
-local Variable = astal.Variable
 
-local NetworkIcon = function()
-	local wifi = Network.get_default().wifi
-
-	return Widget.Label({
-		class_name = "indicator-icon",
-		tooltip_text = bind(wifi, "ssid"):as(tostring),
-		label = bind(wifi, "icon-name"):as(function(icon_name)
-			return Cassiopea.icons.network[icon_name]
-		end),
-	})
-end
+local NetworkIcon = require("lua.components.network").NetworkIcon
+local DateTime = require("lua.components.date_time")
 
 ---@param type "speaker" | "microphone"
 local function VolumeIcon(type)
@@ -70,29 +58,18 @@ local function BatteryLevel()
 	})
 end
 
-local function Clock(format)
-	local time = Variable(""):poll(1000, function()
-		return GLib.DateTime.new_now_local():format(format)
-	end)
-
-	return Widget.Label({
-		class_name = "clock",
-		on_destroy = function()
-			time:drop()
-		end,
-		label = time(),
-	})
-end
-
 local function Indicators()
 	return Widget.Button({
 		class_name = "indicators",
+		on_clicked = function()
+			Cassiopea.windows.toggle(Cassiopea.windows.window_name.quick_settings)
+		end,
 		Widget.Box({
 			NetworkIcon(),
 			VolumeIcon("speaker"),
 			VolumeIcon("microphone"),
 			BatteryLevel(),
-			Clock("%H:%M"),
+			DateTime("%H:%M"),
 		}),
 	})
 end

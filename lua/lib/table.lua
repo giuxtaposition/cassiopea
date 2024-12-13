@@ -28,6 +28,20 @@ function M.find(arr, condition)
 	return nil
 end
 
+---@generic T
+---@param arr T[]
+---@param predicate fun(T, integer): boolean
+---@return T[]
+function M.filter(arr, predicate)
+	local result = {}
+	for i, value in ipairs(arr) do
+		if predicate(value, i) then
+			table.insert(result, value)
+		end
+	end
+	return result
+end
+
 ---@param tbl table
 ---@param first integer
 ---@param last? integer

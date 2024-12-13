@@ -3,6 +3,7 @@ local Widget = require("astal.gtk3.widget")
 local window_name = Cassiopea.windows.window_name.bar
 
 local Logo = require("lua.components.logo")
+local Workspaces = require("lua.components.workspaces")
 local ScreenSharingIndicator = require("lua.components.sharing").ScreenSharingIndicator
 local MicRecordingIndicator = require("lua.components.sharing").MicRecordingIndicator
 local WebcamRecordingIndicator = require("lua.components.sharing").WebcamRecordingIndicator

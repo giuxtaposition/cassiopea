@@ -27,6 +27,7 @@ astal.lib.mkLuaPackage {
     [
       pkgs.dart-sass
       pkgs.lsof
+      pkgs.wl-gammarelay-rs
     ]
     ++ (with astal.packages.${system}; [
       battery
@@ -36,5 +37,7 @@ astal.lib.mkLuaPackage {
       tray
       io
       apps
+      bluetooth
+      notifd
     ]);
 }

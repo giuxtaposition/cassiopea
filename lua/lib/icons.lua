@@ -35,6 +35,7 @@ M.network = {
 	["network-wireless-signal-ok-symbolic"] = "󰤢",
 	["network-wireless-signal-weak-symbolic"] = "󰤟",
 	["network-wireless-signal-none-symbolic"] = "󰤯",
+	["network-wireless-no-route-symbolic"] = "󰤫",
 }
 
 M.battery = {
@@ -59,6 +60,21 @@ M.battery = {
 	["battery-level-20-symbolic"] = "󰁻",
 	["battery-level-10-symbolic"] = "󰁻",
 	["battery-level-0-symbolic"] = "󰂎",
+}
+
+M.bluetooth = {
+	enabled = "󰂯",
+	disabled = "󰂲",
+}
+
+M.do_not_disturb = {
+	enabled = "󰂛",
+	disabled = "󰂚",
+}
+
+M.eye_shield = {
+	enabled = "󰈈",
+	disabled = "󰈉",
 }
 
 return M

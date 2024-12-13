@@ -2,12 +2,11 @@
 @use "colors";
 @use "lib";
 
-.quick-settings {
+window#quick-settings {
   @include lib.unset($rec: true);
-  & {
+
+  .quick-settings {
     @include lib.window;
-    margin-right: 1rem;
-    margin-top: 1rem;
     min-width: 10px;
   }
 
@@ -50,7 +49,7 @@
     font-weight: bold;
   }
 
-  .date {
+  .date-time {
     font-size: 1.2rem;
     font-weight: bold;
   }
@@ -81,7 +80,7 @@
       background-color: color.mix(colors.$primary, colors.$onSurface, 70%);
     }
 
-    .icon {
+    .indicator-icon {
       font-size: 1.3rem;
       color: inherit;
     }
