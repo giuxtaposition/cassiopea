@@ -7,6 +7,7 @@ local Launcher = require("lua.widgets.launcher")
 local Systray = require("lua.widgets.systray")
 local QuickSettings = require("lua.widgets.quick_settings")
 local PowerMenu = require("lua.widgets.power_menu")
+local Notifications = require("lua.widgets.notifications")
 
 local scss = Cassiopea.path.cwd("scss/style.scss")
 local css = "/tmp/style.css"
@@ -23,6 +24,7 @@ App:start({
 	main = function()
 		for _, mon in pairs(App.monitors) do
 			Bar(mon)
+			Notifications(mon)
 		end
 		Launcher()
 		Systray()

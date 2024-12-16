@@ -1,3 +1,5 @@
+local Variable = require("astal").Variable
+local Gtk = require("astal.gtk3").Gtk
 ---@class cassiopea.lib.table
 local M = {}
 
@@ -64,6 +66,51 @@ function M.containsValue(tbl, value)
 		end
 	end
 	return false
+end
+
+function M.varmap(initial)
+	local map = initial
+	local var = Variable()
+
+	local function notify()
+		local arr = {}
+		for _, value in pairs(map) do
+			table.insert(arr, value)
+		end
+		var:set(arr)
+	end
+
+	local function delete(key)
+		if Gtk.Widget:is_type_of(map[key]) then
+			map[key]:destroy()
+		end
+
+		map[key] = nil
+	end
+
+	notify()
+
+	return setmetatable({
+		set = function(key, value)
+			delete(key)
+			map[key] = value
+			notify()
+		end,
+		delete = function(key)
+			delete(key)
+			notify()
+		end,
+		get = function()
+			return var:get()
+		end,
+		subscribe = function(callback)
+			return var:subscribe(callback)
+		end,
+	}, {
+		__call = function()
+			return var()
+		end,
+	})
 end
 
 return M

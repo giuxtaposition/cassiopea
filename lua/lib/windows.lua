@@ -8,6 +8,7 @@ local M = {
 		systray = "systray",
 		quick_settings = "quick-settings",
 		power_menu = "power_menu",
+		notifications = "notifications",
 	},
 }
 
