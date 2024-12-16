@@ -9,6 +9,14 @@ local KEYBOARD_IDENTIFIER = GLib.getenv("KEYBOARD_IDENTIFIER")
 ---@class cassiopea.lib.sway
 local M = {}
 
+M.active_workspaces = Variable(nil):poll(1000, 'bash -c "swaymsg -t get_workspaces"', function(result)
+	local decode = cjson.decode(result)
+	local res = Cassiopea.table.map(decode, function(item)
+		return { id = item.name, focused = item.focused }
+	end)
+	return res
+end)
+
 M.toggle_keyboard = function()
 	astal.exec('bash -c "swaymsg input ' .. KEYBOARD_IDENTIFIER .. ' events toggle enabled disabled"')
 end
