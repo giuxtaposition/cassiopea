@@ -39,7 +39,7 @@ M.ToggleBluetooth = function()
 		on_button_press_event = function(_, event)
 			if event.button == Gdk.BUTTON_SECONDARY then
 				Cassiopea.windows.hide(Cassiopea.windows.window_name.quick_settings)
-				astal.exec({ "bash", "-c", "blueman-manager" })
+				astal.exec_async({ "swaymsg", "exec", "blueman-manager" })
 			end
 		end,
 		Widget.Box({
