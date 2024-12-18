@@ -22,7 +22,7 @@ return function()
 	end)
 
 	local on_enter = function()
-		apps.fuzzy_query(text:get())[0].launch()
+		apps:fuzzy_query(text:get())[1]:launch()
 		hide()
 	end
 
@@ -39,6 +39,9 @@ return function()
 			on_changed = function(self)
 				text:set(self.text)
 			end,
+			on_show = function(self)
+				self:grab_focus()
+			end,
 			on_activate = function()
 				on_enter()
 			end,
@@ -46,12 +49,15 @@ return function()
 	})
 
 	local AppButton = function(item)
+		local function open_app()
+			hide()
+			item:launch()
+		end
+
 		return Widget.Button({
 			class_name = "item",
-			on_click_release = function()
-				hide()
-				item:launch()
-			end,
+			on_click_release = open_app,
+			on_activate = open_app,
 			Widget.Box({
 				Widget.Icon({
 					icon = item.icon_name,

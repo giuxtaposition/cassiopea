@@ -3,9 +3,11 @@
 @use "lib";
 
 window#launcher {
-  @include lib.window;
-  margin-top: 0.5rem;
-  margin-left: 0.5rem;
+  >box {
+    @include lib.window;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+  }
 
   icon {
     font-size: 3rem;
