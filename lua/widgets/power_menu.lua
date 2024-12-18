@@ -16,11 +16,11 @@ local function SysButton(action, label, icon)
 		Widget.Button({
 			on_clicked = function()
 				local cmd = {
-					poweroff = { "systemctl poweroff" },
-					reboot = { "systemctl reboot" },
-					lock = { "sleep 0.1 && swaylock" },
-					suspend = { "sleep 0.1 && swaylock & systemctl suspend" },
-					signout = { "swaymsg exit" },
+					poweroff = "systemctl poweroff",
+					reboot = "systemctl reboot",
+					lock = "sleep 0.1 && swaylock",
+					suspend = "sleep 0.1 && swaylock & systemctl suspend",
+					signout = "swaymsg exit",
 				}
 
 				Cassiopea.windows.hide(Cassiopea.windows.window_name.power_menu)
