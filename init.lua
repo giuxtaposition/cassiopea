@@ -17,10 +17,6 @@ astal.exec("sass " .. scss .. " " .. css)
 App:start({
 	instance_name = "cassiopea",
 	css = css,
-	request_handler = function(msg, res)
-		print(msg)
-		res("ok")
-	end,
 	main = function()
 		for _, mon in pairs(App.monitors) do
 			Bar(mon)
@@ -30,5 +26,21 @@ App:start({
 		Systray()
 		QuickSettings()
 		PowerMenu()
+	end,
+	---@param request string
+	---@param res fun(response: any): nil
+	request_handler = function(request, res)
+		if string.find(request, "toggle") then
+			local window_name = request:match("toggle%s+(%w+)")
+			Cassiopea.windows.toggle(window_name)
+		end
+
+		res("unknown command")
+	end,
+	---@param message fun(msg: string): string
+	---@param args string
+	client = function(message, args)
+		local res = message(args)
+		print(res)
 	end,
 })
