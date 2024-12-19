@@ -15,31 +15,22 @@ local function Keyboard()
 	return Widget.Button({
 		class_name = "keyboard",
 		on_clicked = function()
-			Cassiopea.sway.toggle_keyboard()
+			Cassiopea.niri.switch_keyboard_layout()
 		end,
 		Widget.Box({
-			Revealer(
-				"󰌌 ",
-				Cassiopea.sway.keyboard(function(keyboard)
-					return keyboard.enabled
-				end)
-			),
-			Revealer(
-				"󰌐 ",
-				Cassiopea.sway.keyboard(function(keyboard)
-					return not keyboard.enabled
-				end)
-			),
+			Widget.Label({
+				label = "󰌌 ",
+			}),
 			Revealer(
 				"en",
-				Cassiopea.sway.keyboard(function(keyboard)
-					return keyboard.layout == "en"
+				Cassiopea.niri.keyboard_layout(function(layout)
+					return layout == "en"
 				end)
 			),
 			Revealer(
 				"it",
-				Cassiopea.sway.keyboard(function(keyboard)
-					return keyboard.layout == "it"
+				Cassiopea.niri.keyboard_layout(function(layout)
+					return layout == "it"
 				end)
 			),
 		}),

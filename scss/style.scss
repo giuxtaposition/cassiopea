@@ -10,3 +10,9 @@
 window {
   background-color: transparent;
 }
+
+tooltip {
+  background-color: colors.$bg;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+}

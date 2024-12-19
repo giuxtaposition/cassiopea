@@ -20,7 +20,7 @@ astal.lib.mkLuaPackage {
 
   extraLuaPackages = ps:
     with ps; [
-      luaPackages.cjson
+      luaPackages.dkjson
     ];
 
   extraPackages =

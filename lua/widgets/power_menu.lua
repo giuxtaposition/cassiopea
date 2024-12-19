@@ -20,7 +20,7 @@ local function SysButton(action, label, icon)
 					reboot = "systemctl reboot",
 					lock = "sleep 0.1 && swaylock",
 					suspend = "sleep 0.1 && swaylock & systemctl suspend",
-					signout = "swaymsg exit",
+					signout = "niri msg action quit",
 				}
 
 				Cassiopea.windows.hide(Cassiopea.windows.window_name.power_menu)

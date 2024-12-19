@@ -20,9 +20,6 @@ end
 ---@param condition fun(T): boolean
 function M.find(arr, condition)
 	for _, value in ipairs(arr) do
-		-- Cassiopea.debug.print_table(value)
-		-- print(condition(value))
-
 		if condition(value) then
 			return value
 		end

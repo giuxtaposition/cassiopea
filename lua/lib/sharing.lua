@@ -1,4 +1,3 @@
-local cjson = require("cjson")
 local Variable = require("astal.variable")
 local split = require("lua.lib.string").split
 
@@ -6,7 +5,7 @@ local split = require("lua.lib.string").split
 local M = {}
 
 M.screen_sharing = Variable(false):poll(1000, 'bash -c "pactl -f json list clients"', function(result)
-	local clients = cjson.decode(result)
+	local clients = Cassiopea.json.decode(result)
 
 	local screen_sharing = false
 	for _, client in ipairs(clients) do
@@ -20,7 +19,7 @@ M.screen_sharing = Variable(false):poll(1000, 'bash -c "pactl -f json list clien
 end)
 
 M.mic_recording = Variable(false):poll(1000, 'bash -c "pactl -f json list source-outputs"', function(result)
-	local sources = cjson.decode(result)
+	local sources = Cassiopea.json.decode(result)
 	return #sources > 0
 end)
 

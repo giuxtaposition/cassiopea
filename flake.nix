@@ -38,7 +38,7 @@
 
       # Optionally, include any environment variables or other settings
       shellHook = ''
-        echo "Welcome to the Cassiopea development shell!@"
+        echo "Welcome to the Cassiopea development shell!"
       '';
     };
 

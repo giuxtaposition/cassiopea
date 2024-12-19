@@ -7,7 +7,7 @@ local M = {
 		bar = "bar",
 		systray = "systray",
 		quick_settings = "quick-settings",
-		power_menu = "power_menu",
+		power_menu = "power-menu",
 		notifications = "notifications",
 	},
 }

@@ -40,7 +40,13 @@ App:start({
 	---@param message fun(msg: string): string
 	---@param args string
 	client = function(message, args)
+		if args == nil then
+			return
+		end
+
 		local res = message(args)
-		print(res)
+		if res ~= nil then
+			print(res)
+		end
 	end,
 })

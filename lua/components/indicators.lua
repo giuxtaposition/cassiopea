@@ -30,9 +30,9 @@ local function Indicators()
 		end,
 		Widget.Box({
 			NetworkIcon(),
-			VolumeIcon("speaker"),
-			VolumeIcon("microphone"),
 			BatteryLevel(),
+			VolumeIcon("microphone"),
+			VolumeIcon("speaker"),
 			DateTime("%H:%M"),
 		}),
 	})

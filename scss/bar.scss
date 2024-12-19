@@ -5,19 +5,12 @@
 window#bar {
   @include lib.unset($rec: true);
 
-  & {
+  >centerbox {
     @include lib.window;
-    min-height: 2.25rem;
-    padding: 1rem;
+    padding: 0.5rem;
     margin-top: 0.6rem;
   }
 
-  tooltip {
-    background-color: colors.$surfaceVariant;
-    color: colors.$onSurface;
-    padding: 1rem;
-    border-radius: 1rem;
-  }
 
   .logo {
     font-size: 1.5rem;
@@ -44,18 +37,19 @@ window#bar {
       padding: 0rem 0.7rem;
       transition: 0.3s;
 
-      &.active {
+      &.focused {
         border-radius: 1rem;
         background-color: colors.$primary;
         padding: 0 2rem;
       }
 
-      &.empty {
+      &.inactive {
         background-color: colors.$overlay1;
       }
 
       &:hover {
         background-color: color.mix(colors.$onPrimary, colors.$onSurface, 70%);
+
         &.current {
           background-color: color.mix(colors.$primary, colors.$onSurface, 70%);
         }
@@ -102,11 +96,9 @@ window#bar {
     }
 
     &:hover {
-      background-color: color.mix(
-        colors.$surfaceVariant,
-        colors.$onSurfaceVariant,
-        70%
-      );
+      background-color: color.mix(colors.$surfaceVariant,
+          colors.$onSurfaceVariant,
+          70%);
     }
 
     .date-time {
@@ -132,9 +124,11 @@ window#bar {
     25% {
       opacity: 0.5;
     }
+
     50% {
       opacity: 1;
     }
+
     75% {
       opacity: 0.5;
     }
