@@ -27,10 +27,15 @@ M.workspaces = Variable({
 	local workspaces = {}
 
 	for _, item in ipairs(decode) do
-		workspaces[item.idx] = { is_active = (item.active_window_id ~= nil), is_focused = item.is_focused }
+		workspaces[item.idx] =
+			{ index = item.idx, is_active = (item.active_window_id ~= nil), is_focused = item.is_focused }
 	end
 
 	return workspaces
 end)
+
+M.focus_workspace = function(idx)
+	astal.exec(string.format('bash -c "niri msg action focus-workspace %d"', idx))
+end
 
 return M

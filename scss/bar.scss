@@ -44,6 +44,10 @@ window#bar {
 
       &.inactive:not(.focused) {
         background-color: colors.$overlay1;
+
+        &:hover {
+          background-color: color.mix(colors.$onPrimary, colors.$onSurface, 70%);
+        }
       }
 
       &:hover {

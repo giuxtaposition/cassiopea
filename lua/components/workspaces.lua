@@ -6,6 +6,9 @@ local function WorkspacesComponent()
 		Cassiopea.niri.workspaces(function(workspaces)
 			return Cassiopea.table.map(workspaces, function(workspace)
 				return Widget.Button({
+					on_click = function()
+						Cassiopea.niri.focus_workspace(workspace.index)
+					end,
 					class_name = (function()
 						return string.format(
 							"workspace %s %s",
