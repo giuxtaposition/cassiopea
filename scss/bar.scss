@@ -65,12 +65,34 @@ window#bar {
   .tray-button {
     border-radius: 0.5rem;
     padding: 0 0.5rem;
-    margin: 0 0.25rem;
     transition: 0.3s;
-    font-size: 1.5rem;
+    font-size: 1rem;
 
     &:hover {
       background-color: color.mix(colors.$surface, colors.$onSurface, 70%);
+    }
+  }
+
+  .systray {
+    margin: 0 0.5rem;
+
+    .systray-items {
+      margin: 0 0.5rem;
+
+      .systray-item {
+        transition: 0.3s;
+        border-radius: 1rem;
+
+        &:hover {
+          background-color: color.mix(colors.$blue,
+              colors.$onSurfaceVariant,
+              70%);
+        }
+
+        icon {
+          font-size: 1.25rem;
+        }
+      }
     }
   }
 

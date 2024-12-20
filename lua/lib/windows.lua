@@ -5,7 +5,6 @@ local M = {
 	window_name = {
 		launcher = "launcher",
 		bar = "bar",
-		systray = "systray",
 		quick_settings = "quick-settings",
 		power_menu = "power-menu",
 		notifications = "notifications",
