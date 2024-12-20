@@ -11,6 +11,7 @@ local Tray = require("lua.components.tray")
 local Keyboard = require("lua.components.keyboard")
 local Indicators = require("lua.components.indicators")
 local DateTime = require("lua.components.date_time")
+local SpotifyIndicator = require("lua.components.player").SpotifyIndicator
 
 return function(gdkmonitor)
 	local WindowAnchor = astal.require("Astal", "3.0").WindowAnchor
@@ -31,6 +32,7 @@ return function(gdkmonitor)
 			}),
 			Widget.Box({
 				DateTime("%H:%M - %A %d"),
+				SpotifyIndicator(),
 			}),
 			Widget.Box({
 				halign = "END",

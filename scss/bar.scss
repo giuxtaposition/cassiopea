@@ -11,7 +11,6 @@ window#bar {
     margin-top: 0.6rem;
   }
 
-
   .logo {
     font-size: 1.5rem;
     background-color: colors.$primary;
@@ -64,6 +63,17 @@ window#bar {
     border-radius: 1rem;
     transition: 0.3s;
     font-size: 1rem;
+  }
+
+  .spotify-indicator {
+    margin: 0.5rem;
+    padding: 0.1rem 0.1rem 0.1rem 0.3rem;
+    color: colors.$green;
+    border-radius: 1rem;
+
+    &:hover {
+      background-color: color.mix(colors.$surface, colors.$onSurface, 70%);
+    }
   }
 
   .tray-button {

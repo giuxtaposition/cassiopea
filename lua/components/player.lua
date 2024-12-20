@@ -1,5 +1,5 @@
 local astal = require("astal")
-
+local Gdk = astal.require("Gdk", "3.0")
 local Astal = astal.require("Astal", "3.0")
 
 local bind = astal.bind
@@ -144,6 +144,45 @@ M.Player = function()
 		bind(mpris, "players"):as(function(players)
 			return Cassiopea.table.map(players, MediaPlayer)
 		end),
+	})
+end
+
+M.SpotifyIndicator = function()
+	local mpris = Mpris.get_default()
+
+	return Widget.Revealer({
+		transition_duration = 200,
+		transition_type = "SLIDE_RIGHT",
+		reveal_child = bind(mpris, "players"):as(function(players)
+			if players == nil then
+				return false
+			end
+
+			return Cassiopea.table.find(players, function(player)
+				return player.entry == "spotify"
+			end)
+		end),
+		Widget.Button({
+			class_name = "spotify-indicator",
+			on_clicked = function()
+				local player = Cassiopea.table.find(mpris.players, function(player)
+					return player.entry == "spotify"
+				end)
+				if player == nil then
+					return
+				end
+
+				player:play_pause()
+			end,
+			on_button_press_event = function(_, event)
+				if event.button == Gdk.BUTTON_SECONDARY then
+					Cassiopea.niri.focus_window("spotify")
+				end
+			end,
+			Widget.Label({
+				label = " ",
+			}),
+		}),
 	})
 end
 
