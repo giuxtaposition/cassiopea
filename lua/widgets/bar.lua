@@ -10,6 +10,7 @@ local WebcamRecordingIndicator = require("lua.components.sharing").WebcamRecordi
 local Tray = require("lua.components.tray")
 local Keyboard = require("lua.components.keyboard")
 local Indicators = require("lua.components.indicators")
+local DateTime = require("lua.components.date_time")
 
 return function(gdkmonitor)
 	local WindowAnchor = astal.require("Astal", "3.0").WindowAnchor
@@ -29,9 +30,7 @@ return function(gdkmonitor)
 				Workspaces(),
 			}),
 			Widget.Box({
-				Widget.Label({
-					label = "",
-				}),
+				DateTime("%H:%M - %A %d"),
 			}),
 			Widget.Box({
 				halign = "END",

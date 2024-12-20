@@ -4,7 +4,6 @@ local Battery = astal.require("AstalBattery")
 local bind = astal.bind
 
 local NetworkIcon = require("lua.components.network").NetworkIcon
-local DateTime = require("lua.components.date_time")
 local VolumeIcon = require("lua.components.volume").VolumeIcon
 
 local function BatteryLevel()
@@ -33,7 +32,6 @@ local function Indicators()
 			BatteryLevel(),
 			VolumeIcon("microphone"),
 			VolumeIcon("speaker"),
-			DateTime("%H:%M"),
 		}),
 	})
 end

@@ -30,11 +30,9 @@ window#quick-settings {
     font-weight: bold;
 
     &:hover {
-      background-color: color.mix(
-        colors.$surfaceVariant,
-        colors.$onSurfaceVariant,
-        70%
-      );
+      background-color: color.mix(colors.$surfaceVariant,
+          colors.$onSurfaceVariant,
+          70%);
     }
   }
 
@@ -65,17 +63,16 @@ window#quick-settings {
     font-weight: bold;
 
     &:hover {
-      background-color: color.mix(
-        colors.$surfaceVariant,
-        colors.$onSurfaceVariant,
-        70%
-      );
+      background-color: color.mix(colors.$surfaceVariant,
+          colors.$onSurfaceVariant,
+          70%);
     }
 
     &.active {
       background-color: colors.$primary;
       color: colors.$surface;
     }
+
     &.active:hover {
       background-color: color.mix(colors.$primary, colors.$onSurface, 70%);
     }
@@ -120,6 +117,7 @@ window#quick-settings {
     }
 
     &.muted {
+
       highlight,
       progress {
         background-color: colors.$surfaceVariant;
@@ -151,11 +149,9 @@ window#quick-settings {
     padding: 0 0.3rem 0 0.2rem;
 
     &:hover {
-      background-color: color.mix(
-        colors.$surfaceVariant,
-        colors.$onSurfaceVariant,
-        70%
-      );
+      background-color: color.mix(colors.$surfaceVariant,
+          colors.$onSurfaceVariant,
+          70%);
     }
 
     &.active {
