@@ -12,6 +12,10 @@ local function NotificationMap()
 	local notif_map = Cassiopea.table.varmap({})
 
 	notifd.on_notified = function(_, id)
+		if notifd["dont-disturb"] then
+			return
+		end
+
 		notif_map.set(
 			id,
 			Notification({

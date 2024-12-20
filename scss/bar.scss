@@ -43,7 +43,7 @@ window#bar {
         padding: 0 2rem;
       }
 
-      &.inactive {
+      &.inactive:not(.focused) {
         background-color: colors.$overlay1;
       }
 
