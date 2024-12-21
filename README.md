@@ -7,8 +7,19 @@ A wayland desktop shell made using [astal](https://aylur.github.io/astal/) writt
 
 ## Widgets
 
-- [ ] Bar
-- [x] App launcher
-- [ ] Notification Popups
-- [ ] Control Center
-- [ ] Screen locker
+### Bar
+
+![bar](/.github/assets/bar.png)
+
+### Launcher
+
+![launcher](/.github/assets/launcher.png)
+
+### Quick Settings
+
+![quick settings](/.github/assets/quick-settings.png)
+![quick settings](/.github/assets/quick-settings-2.png)
+
+### Notifications
+
+![notifications](/.github/assets/notifications.png)
