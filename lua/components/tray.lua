@@ -31,27 +31,16 @@ local function Systray()
 				class_name = "systray-items",
 				bind(tray, "items"):as(function(items)
 					return Cassiopea.table.map(items, function(item)
-						if item.icon_theme_path ~= nil then
-							App:add_icons(item.icon_theme_path)
-						end
-
-						local menu = item:create_menu()
-
-						return Widget.Button({
+						return Widget.MenuButton({
 							class_name = "systray-item",
 							tooltip_markup = bind(item, "tooltip_markup"),
-							on_destroy = function()
-								if menu ~= nil then
-									menu:destroy()
-								end
-							end,
-							on_click_release = function(self)
-								if menu ~= nil then
-									menu:popup_at_widget(self, Gdk.Gravity.SOUTH, Gdk.Gravity.NORTH, nil)
-								end
-							end,
+							use_popover = false,
+							menu_model = bind(item, "menu-model"),
+							action_group = bind(item, "action-group"):as(function(ag)
+								return { "dbusmenu", ag }
+							end),
 							Widget.Icon({
-								g_icon = bind(item, "gicon"),
+								gicon = bind(item, "gicon"),
 							}),
 						})
 					end)

@@ -96,7 +96,7 @@ local function MediaPlayer(player)
 						on_clicked = function()
 							player:previous()
 						end,
-						visible = bind(player, "canGoPrevious"),
+						visible = bind(player, "can_go_previous"),
 						Widget.Icon({
 							icon = "media-skip-backward-symbolic",
 						}),
@@ -105,7 +105,7 @@ local function MediaPlayer(player)
 						on_clicked = function()
 							player:play_pause()
 						end,
-						visible = bind(player, "canControl"),
+						visible = bind(player, "can_control"),
 						Widget.Icon({
 							icon = play_icon,
 						}),
@@ -114,7 +114,7 @@ local function MediaPlayer(player)
 						on_clicked = function()
 							player:next()
 						end,
-						visible = bind(player, "canGoNext"),
+						visible = bind(player, "can_go_next"),
 						Widget.Icon({
 							icon = "media-skip-forward-symbolic",
 						}),
