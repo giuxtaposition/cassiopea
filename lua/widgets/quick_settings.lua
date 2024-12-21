@@ -7,6 +7,7 @@ local Avatar = require("lua.components.avatar")
 local SignOut = require("lua.components.sign_out")
 local DateTime = require("lua.components.date_time")
 local ToggleNetwork = require("lua.components.network").ToggleNetwork
+local NetworkList = require("lua.components.network").NetworkList
 local ToggleBluetooth = require("lua.components.bluetooth").ToggleBluetooth
 local ToggleDoNotDisturb = require("lua.components.do_not_disturb").ToggleDoNotDisturb
 local ToggleNightLight = require("lua.components.night_light").ToggleNightLight
@@ -44,11 +45,16 @@ return function()
 				DateTime("%H:%M | %a, %b %d"),
 			}),
 			Widget.Box({
-				homogeneous = true,
+				vertical = true,
 				spacing = 8,
-				class_name = "row",
-				ToggleNetwork(),
-				ToggleBluetooth(),
+				Widget.Box({
+					class_name = "row",
+					spacing = 8,
+					homogeneous = true,
+					ToggleNetwork(),
+					ToggleBluetooth(),
+				}),
+				NetworkList(),
 			}),
 			Widget.Box({
 				homogeneous = true,

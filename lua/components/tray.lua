@@ -4,8 +4,6 @@ local tray = Tray.get_default()
 local astal = require("astal")
 local bind = astal.bind
 local Variable = astal.Variable
-local App = require("astal.gtk3.app")
-local Gdk = astal.require("Gdk", "3.0")
 
 local function Systray()
 	local show_systray = Variable(false)
