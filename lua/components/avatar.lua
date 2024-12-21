@@ -1,28 +1,24 @@
 local Widget = require("astal.gtk3.widget")
-local astal = require("astal")
-local Variable = astal.Variable
+local GLib = require("lgi").require("GLib")
+local avatar_path = GLib.getenv("CASSIOPEA_AVATAR_PATH")
 
 local function Avatar()
 	local size = 45
-	local img_url = Variable(""):watch("pwd", function(result)
-		return result .. "/assets/user.jpg"
-	end)
+	print(avatar_path)
 
 	return Widget.Box({
 		class_name = "avatar",
-		css = img_url(function(img)
-			return string.format(
-				[[
+		css = string.format(
+			[[
           min-width: %spx;
           min-height: %spx;
           background-image: url('%s');
           background-size: cover;
         ]],
-				size,
-				size,
-				img
-			)
-		end),
+			size,
+			size,
+			avatar_path
+		),
 	})
 end
 
