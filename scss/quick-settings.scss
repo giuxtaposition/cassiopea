@@ -30,9 +30,11 @@ window#quick-settings {
     font-weight: bold;
 
     &:hover {
-      background-color: color.mix(colors.$surfaceVariant,
-          colors.$onSurfaceVariant,
-          70%);
+      background-color: color.mix(
+        colors.$surfaceVariant,
+        colors.$onSurfaceVariant,
+        70%
+      );
     }
   }
 
@@ -59,13 +61,14 @@ window#quick-settings {
     border-radius: 1.5rem;
     padding: 0.75rem;
     font-size: 1.05rem;
-    margin-top: 1rem;
     font-weight: bold;
 
     &:hover {
-      background-color: color.mix(colors.$surfaceVariant,
-          colors.$onSurfaceVariant,
-          70%);
+      background-color: color.mix(
+        colors.$surfaceVariant,
+        colors.$onSurfaceVariant,
+        70%
+      );
     }
 
     &.active {
@@ -84,6 +87,11 @@ window#quick-settings {
 
     .text {
       margin-left: 1rem;
+
+      .subtitle {
+        font-size: 0.9rem;
+        font-weight: normal;
+      }
     }
 
     .state {
@@ -96,72 +104,42 @@ window#quick-settings {
     }
   }
 
-  .volume-icon {
-    margin-left: 0.75rem;
-    font-size: 1.5rem;
-
-    &.less {
-      color: colors.$onSurface;
-    }
-
-    &.more {
-      color: colors.$surface;
-    }
-  }
-
   .volume-slider {
-    slider {
-      box-shadow: none;
-      background-color: transparent;
-      border: none;
-    }
-
-    &.muted {
-
-      highlight,
-      progress {
-        background-color: colors.$surfaceVariant;
-      }
-    }
-
     trough {
       background-color: colors.$surfaceVariant;
       border-radius: 1rem;
-      min-height: 2.25rem;
+    }
 
+    highlight {
+      background-color: colors.$primary;
+      min-height: 0.8rem;
+      border-radius: 1rem;
+    }
+
+    slider {
+      background-color: colors.$primary;
+      border-radius: 1rem;
+      min-height: 1.2rem;
+      min-width: 1.2rem;
+      margin: -0.2em;
+    }
+
+    & .muted {
       highlight,
-      progress {
-        background-color: colors.$primary;
-        border-radius: 1rem;
-        min-height: 2.25rem;
+      slider {
+        background-color: colors.$onSurfaceVariant;
       }
     }
   }
 
-  .volume-mute {
-    background-color: colors.$surfaceVariant;
-    color: colors.$onSurface;
-    margin-left: 0.5rem;
-    font-size: 1.5rem;
-    min-width: 2.25rem;
+  .volume-mute-button {
+    @include lib.hovered-button;
+    margin-right: 0.75rem;
+    font-size: 1.25rem;
+    min-width: 2rem;
     border-radius: 2rem;
     transition: 0.3s;
     padding: 0 0.3rem 0 0.2rem;
-
-    &:hover {
-      background-color: color.mix(colors.$surfaceVariant,
-          colors.$onSurfaceVariant,
-          70%);
-    }
-
-    &.active {
-      background-color: colors.$primary;
-      color: colors.$surface;
-    }
-
-    &.active:hover {
-      background-color: color.mix(colors.$primary, colors.$onSurface, 70%);
-    }
   }
 
   .player {

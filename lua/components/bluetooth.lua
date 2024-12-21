@@ -2,7 +2,7 @@ local astal = require("astal")
 local bind = astal.bind
 local Bluetooth = require("lgi").require("AstalBluetooth")
 local Widget = require("astal.gtk3.widget")
-local Gdk = astal.require("Gdk", "3.0")
+local ToggleButton = require("lua.components.toggle_button")
 
 local M = {}
 
@@ -28,40 +28,24 @@ M.BluetoothIcon = function()
 end
 
 M.ToggleBluetooth = function()
-	return Widget.Button({
-		class_name = bind(bluetooth, "is_powered"):as(function(enabled)
-			local class_name = "toggle-button "
-			return class_name .. (enabled and "active" or "")
-		end),
-		on_clicked = function()
+	return ToggleButton(
+		bind(bluetooth, "is_powered"),
+		function()
 			bluetooth:toggle()
 		end,
-		on_button_press_event = function(_, event)
-			if event.button == Gdk.BUTTON_SECONDARY then
-				Cassiopea.windows.hide(Cassiopea.windows.window_name.quick_settings)
-				astal.exec_async("niri msg action spawn -- blueman-manager")
+		M.BluetoothIcon(),
+		"Bluetooth",
+		bind(bluetooth, "devices"):as(function(devices)
+			local connected_devices = Cassiopea.table.filter(devices, function(device)
+				return device.connected
+			end)
+			if #connected_devices == 1 then
+				return connected_devices[1].name
 			end
-		end,
-		Widget.Box({
-			M.BluetoothIcon(),
-			Widget.Box({
-				class_name = "text",
-				Widget.Label({
-					class_name = "title",
-					label = bind(bluetooth, "devices"):as(function(devices)
-						local connected_devices = Cassiopea.table.filter(devices, function(device)
-							return device.connected
-						end)
-						if #connected_devices == 1 then
-							return connected_devices[1].name
-						end
 
-						return #connected_devices .. " Connected"
-					end),
-				}),
-			}),
-		}),
-	})
+			return #connected_devices .. " Connected"
+		end)
+	)
 end
 
 return M

@@ -17,3 +17,10 @@
     }
   }
 }
+
+@mixin hovered-button {
+  &:hover {
+    background-color: colors.$primary;
+    color: colors.$base;
+  }
+}

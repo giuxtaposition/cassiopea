@@ -9,7 +9,7 @@ local DateTime = require("lua.components.date_time")
 local ToggleNetwork = require("lua.components.network").ToggleNetwork
 local ToggleBluetooth = require("lua.components.bluetooth").ToggleBluetooth
 local ToggleDoNotDisturb = require("lua.components.do_not_disturb").ToggleDoNotDisturb
-local ToggleEyeShield = require("lua.components.eye_shield").ToggleEyeShield
+local ToggleNightLight = require("lua.components.night_light").ToggleNightLight
 local VolumeSliderAndMuteButton = require("lua.components.volume").VolumeSliderAndMuteButton
 local Player = require("lua.components.player").Player
 
@@ -55,7 +55,7 @@ return function()
 				spacing = 8,
 				class_name = "row",
 				ToggleDoNotDisturb(),
-				ToggleEyeShield(),
+				ToggleNightLight(),
 			}),
 			VolumeSliderAndMuteButton("speaker"),
 			VolumeSliderAndMuteButton("microphone"),

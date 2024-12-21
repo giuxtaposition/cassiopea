@@ -1,9 +1,8 @@
 local astal = require("astal")
 local bind = astal.bind
-
 local Notifd = require("lgi").require("AstalNotifd")
-
 local Widget = require("astal.gtk3.widget")
+local ToggleButton = require("lua.components.toggle_button")
 
 local M = {}
 local notifd = Notifd.get_default()
@@ -19,31 +18,21 @@ M.DoNotDisturbIcon = function()
 end
 
 M.ToggleDoNotDisturb = function()
-	return Widget.Button({
-		class_name = bind(notifd, "dont-disturb"):as(function(enabled)
-			local class_name = "toggle-button "
-			return class_name .. (enabled and "active" or "")
-		end),
-		on_clicked = function()
+	return ToggleButton(
+		bind(notifd, "dont-disturb"),
+		function()
 			if notifd["dont-disturb"] then
 				notifd["dont-disturb"] = false
 			else
 				notifd["dont-disturb"] = true
 			end
 		end,
-		Widget.Box({
-			M.DoNotDisturbIcon(),
-			Widget.Box({
-				class_name = "text",
-				Widget.Label({
-					class_name = "title",
-					label = bind(notifd, "dont-disturb"):as(function(dnd)
-						return dnd and "Silent" or "Noisy"
-					end),
-				}),
-			}),
-		}),
-	})
+		M.DoNotDisturbIcon(),
+		"Do Not Disturb",
+		bind(notifd, "dont-disturb"):as(function(dnd)
+			return dnd and "Silent" or "Noisy"
+		end)
+	)
 end
 
 return M

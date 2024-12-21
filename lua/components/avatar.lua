@@ -4,7 +4,6 @@ local avatar_path = GLib.getenv("CASSIOPEA_AVATAR_PATH")
 
 local function Avatar()
 	local size = 45
-	print(avatar_path)
 
 	return Widget.Box({
 		class_name = "avatar",

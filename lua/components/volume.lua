@@ -44,18 +44,18 @@ end
 M.VolumeSlider = function(type)
 	local volume = Wp.get_default().audio["default_" .. type]
 
-	return Widget.Overlay({
+	return Widget.Box({
+		class_name = "volume-slider",
 		hexpand = true,
-		pass_through = true,
 		Widget.Slider({
+			hexpand = true,
 			draw_value = false,
 			on_dragged = function(self)
 				volume.volume = self.value
 			end,
 			value = bind(volume, "volume"),
 			class_name = bind(volume, "mute"):as(function(mute)
-				local class_name = "volume-slider "
-				return class_name .. (mute and "mute" or "")
+				return (mute and "muted" or "")
 			end),
 		}),
 	})
@@ -70,12 +70,14 @@ M.VolumeMuteButton = function(type)
 			volume.mute = not volume.mute
 		end,
 		class_name = bind(volume, "mute"):as(function(mute)
-			local class_name = "volume-mute "
+			local class_name = "volume-mute-button "
 			return class_name .. (mute and "active" or "")
 		end),
 
 		Widget.Label({
-			label = Cassiopea.icons.volume[type].muted,
+			label = bind(volume, "mute"):as(function(mute)
+				return mute and Cassiopea.icons.volume[type].muted or Cassiopea.icons.volume[type].volume[3]
+			end),
 		}),
 	})
 end
@@ -84,8 +86,8 @@ end
 M.VolumeSliderAndMuteButton = function(type)
 	return Widget.Box({
 		class_name = "volume",
-		M.VolumeSlider(type),
 		M.VolumeMuteButton(type),
+		M.VolumeSlider(type),
 	})
 end
 
