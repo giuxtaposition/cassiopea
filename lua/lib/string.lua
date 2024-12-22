@@ -25,13 +25,7 @@ M.truncate = function(str, max_length, suffix)
 	end
 
 	suffix = suffix or "..."
-	local trunc_length = max_length - #suffix
-
-	if trunc_length < 0 then
-		trunc_length = 0
-	end
-
-	return string.sub(str, 1, trunc_length) .. suffix
+	return string.sub(str, 1, max_length) .. suffix
 end
 
 return M

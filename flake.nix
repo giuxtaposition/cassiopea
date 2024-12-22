@@ -32,6 +32,7 @@
       buildInputs = with pkgs;
         [
           inotify-tools
+          luaPackages.busted
         ]
         ++ (self.packages.${system}.cassiopea.buildInputs)
         ++ (self.packages.${system}.cassiopea.nativeBuildInputs);

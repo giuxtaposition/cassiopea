@@ -54,17 +54,6 @@ function M.slice(tbl, first, last)
 	return sliced
 end
 
----@param tbl table
----@param value any
-function M.containsValue(tbl, value)
-	for _, v in ipairs(tbl) do
-		if v == value then
-			return true
-		end
-	end
-	return false
-end
-
 function M.varmap(initial)
 	local map = initial
 	local var = Variable()
