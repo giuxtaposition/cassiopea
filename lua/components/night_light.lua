@@ -13,7 +13,7 @@ local night_light_enabled = Variable(false):watch("wl-gammarelay-rs watch {t}", 
 	return tonumber(result) ~= MAX_TEMP
 end)
 
-local function toggle_eye_shield()
+local function toggle_night_light()
 	local new_temperature
 
 	if night_light_enabled:get() then
@@ -46,10 +46,10 @@ M.ToggleNightLight = function()
 	return ToggleButton(
 		bind(night_light_enabled),
 		function()
-			toggle_eye_shield()
+			toggle_night_light()
 		end,
 		M.NightLightIcon(),
-		"Eye Shield",
+		"Night Light",
 		night_light_enabled(function(enabled)
 			return enabled and "Enabled" or "Disabled"
 		end)

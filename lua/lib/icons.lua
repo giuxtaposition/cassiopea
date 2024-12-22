@@ -73,8 +73,8 @@ M.do_not_disturb = {
 }
 
 M.night_light = {
-	enabled = "󰈈 ",
-	disabled = "󰈉 ",
+	enabled = "󰽥 ",
+	disabled = "󰖨 ",
 }
 
 M.power_menu = {
