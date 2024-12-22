@@ -29,8 +29,15 @@ App:start({
 	---@param res fun(response: any): nil
 	request_handler = function(request, res)
 		if string.find(request, "toggle") then
-			local window_name = request:match("toggle%s+(%w+)")
-			Cassiopea.windows.toggle(window_name)
+			local window_name = string.match(request, "%w+%s+(.*)")
+			if window_name == nil then
+				res("no window name provided")
+			end
+			if Cassiopea.windows.window_name[window_name] == nil then
+				res("window not found")
+			end
+
+			Cassiopea.windows.toggle(Cassiopea.windows.window_name[window_name])
 			res("toggled " .. window_name)
 		end
 
