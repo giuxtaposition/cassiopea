@@ -103,7 +103,7 @@ M.ShowDeviceListButton = function(type)
 	})
 end
 
----@param type "speaker" | "microphone" --TODO
+---@param type "speaker" | "microphone"
 M.DeviceList = function(type)
 	local audio = Wp.get_default().audio
 	local reveal_child_binding = type == "speaker" and show_speaker_devices_list or show_microphone_devices_list

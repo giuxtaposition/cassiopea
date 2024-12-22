@@ -145,23 +145,23 @@ window#quick-settings {
       transition: 0.3s;
       padding: 0 0.3rem 0 0.2rem;
     }
+  }
 
-    .device-list {
-      .device-item {
-        @include lib.hovered-button;
-        border-radius: 1rem;
-        padding: 0.25rem 1rem;
-        .icon {
-          margin-right: 1rem;
-          font-size: 1rem;
-        }
-        & .active {
-          color: colors.$primary;
-        }
+  .device-list {
+    .device-item {
+      @include lib.hovered-button;
+      border-radius: 1rem;
+      padding: 0.25rem 1rem;
+      .icon {
+        margin-right: 1rem;
+        font-size: 1rem;
+      }
+      & .active {
+        color: colors.$primary;
+      }
 
-        &:hover .active {
-          color: colors.$base;
-        }
+      &:hover .active {
+        color: colors.$base;
       }
     }
   }

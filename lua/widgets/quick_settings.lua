@@ -9,6 +9,7 @@ local DateTime = require("lua.components.date_time")
 local ToggleNetwork = require("lua.components.network").ToggleNetwork
 local NetworkList = require("lua.components.network").NetworkList
 local ToggleBluetooth = require("lua.components.bluetooth").ToggleBluetooth
+local BluetoothDevicesList = require("lua.components.bluetooth").BluetoothDevicesList
 local ToggleDoNotDisturb = require("lua.components.do_not_disturb").ToggleDoNotDisturb
 local ToggleNightLight = require("lua.components.night_light").ToggleNightLight
 local VolumeSliderAndMuteButton = require("lua.components.volume").VolumeSliderAndMuteButton
@@ -51,6 +52,7 @@ return function()
 					ToggleBluetooth(),
 				}),
 				NetworkList(),
+				BluetoothDevicesList(),
 			}),
 			Widget.Box({
 				homogeneous = true,
