@@ -31,6 +31,7 @@ App:start({
 		if string.find(request, "toggle") then
 			local window_name = request:match("toggle%s+(%w+)")
 			Cassiopea.windows.toggle(window_name)
+			res("toggled " .. window_name)
 		end
 
 		res("unknown command")
