@@ -20,15 +20,9 @@
       transition: 0.3s;
       padding: 3.25rem 4rem;
       font-size: 4rem;
-
-      &:hover {
-        background-color: color.mix(
-          colors.$surfaceVariant,
-          colors.$onSurfaceVariant,
-          70%
-        );
-      }
+      @include lib.hovered-button;
     }
+
     .label {
       margin-top: 0.5rem;
       font-size: 1.3rem;

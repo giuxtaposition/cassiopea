@@ -3,7 +3,7 @@
 @use "lib";
 
 window#launcher {
-  >box {
+  > box {
     @include lib.window;
     margin-top: 0.5rem;
     margin-left: 0.5rem;
@@ -33,10 +33,7 @@ window#launcher {
     transition: 0.3s;
     background-color: transparent;
     border: none;
-
-    &:hover {
-      background-color: color.mix(colors.$surface, colors.$onSurface, 90%);
-    }
+    @include lib.hovered-button;
 
     label {
       margin-left: 0.5rem;

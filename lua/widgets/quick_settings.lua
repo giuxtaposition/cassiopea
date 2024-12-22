@@ -4,7 +4,7 @@ local Widget = require("astal.gtk3.widget")
 local Gdk = astal.require("Gdk", "3.0")
 local Astal = astal.require("Astal", "3.0")
 local Avatar = require("lua.components.avatar")
-local SignOut = require("lua.components.sign_out")
+local PowerMenuButtons = require("lua.components.power_menu_buttons").PowerMenuButtons
 local DateTime = require("lua.components.date_time")
 local ToggleNetwork = require("lua.components.network").ToggleNetwork
 local NetworkList = require("lua.components.network").NetworkList
@@ -36,12 +36,8 @@ return function()
 			spacing = 16,
 			Widget.Box({
 				hexpand = true,
-				class_name = "header", --TODO:rename
-				Widget.Box({
-					hexpand = true,
-					Avatar(),
-					SignOut(),
-				}),
+				Avatar(),
+				PowerMenuButtons(),
 				DateTime("%H:%M | %a, %b %d"),
 			}),
 			Widget.Box({

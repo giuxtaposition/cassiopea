@@ -5,7 +5,7 @@
 window#bar {
   @include lib.unset($rec: true);
 
-  >centerbox {
+  > centerbox {
     @include lib.window;
     padding: 0.5rem;
     margin-top: 0.6rem;
@@ -18,10 +18,7 @@ window#bar {
     border-radius: 2rem;
     padding: 0 1rem 0 0.5rem;
     transition: 0.3s;
-
-    &:hover {
-      background-color: color.mix(colors.$primary, colors.$onSurface, 70%);
-    }
+    @include lib.hovered-button;
   }
 
   .workspaces {
@@ -43,18 +40,7 @@ window#bar {
 
       &.inactive:not(.focused) {
         background-color: colors.$overlay1;
-
-        &:hover {
-          background-color: color.mix(colors.$onPrimary, colors.$onSurface, 70%);
-        }
-      }
-
-      &:hover {
-        background-color: color.mix(colors.$onPrimary, colors.$onSurface, 70%);
-
-        &.current {
-          background-color: color.mix(colors.$primary, colors.$onSurface, 70%);
-        }
+        @include lib.hovered-button;
       }
     }
   }
@@ -71,9 +57,7 @@ window#bar {
     color: colors.$green;
     border-radius: 1rem;
 
-    &:hover {
-      background-color: color.mix(colors.$surface, colors.$onSurface, 70%);
-    }
+    @include lib.hovered-button;
   }
 
   .tray-button {
@@ -82,9 +66,7 @@ window#bar {
     transition: 0.3s;
     font-size: 1rem;
 
-    &:hover {
-      background-color: color.mix(colors.$surface, colors.$onSurface, 70%);
-    }
+    @include lib.hovered-button;
   }
 
   .systray {
@@ -96,12 +78,7 @@ window#bar {
       .systray-item {
         transition: 0.3s;
         border-radius: 1rem;
-
-        &:hover {
-          background-color: color.mix(colors.$blue,
-              colors.$onSurfaceVariant,
-              70%);
-        }
+        @include lib.hovered-button;
 
         icon {
           font-size: 1.25rem;
@@ -117,10 +94,7 @@ window#bar {
     transition: 0.3s;
     font-size: 1.3rem;
     font-weight: bold;
-
-    &:hover {
-      background-color: color.mix(colors.$surface, colors.$onSurface, 70%);
-    }
+    @include lib.hovered-button;
   }
 
   .indicators {
@@ -134,13 +108,7 @@ window#bar {
       margin: 0 0.55rem;
       font-size: 1.5rem;
     }
-
-    &:hover {
-      background-color: color.mix(colors.$surfaceVariant,
-          colors.$onSurfaceVariant,
-          70%);
-    }
-
+    @include lib.hovered-button;
   }
 
   .sharing {

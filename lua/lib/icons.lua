@@ -72,9 +72,17 @@ M.do_not_disturb = {
 	disabled = "󰂚",
 }
 
-M.eye_shield = {
+M.night_light = {
 	enabled = "󰈈",
 	disabled = "󰈉",
+}
+
+M.power_menu = {
+	poweroff = "",
+	reboot = "",
+	lock = "",
+	suspend = "󰤄",
+	signout = "󰗽",
 }
 
 return M

@@ -3,43 +3,7 @@ local App = require("astal.gtk3.app")
 local Widget = require("astal.gtk3.widget")
 local Gdk = astal.require("Gdk", "3.0")
 local Astal = astal.require("Astal", "3.0")
-
----@param action string
----@param label string
----@param icon string
-local function SysButton(action, label, icon)
-	return Widget.Box({
-		hexpand = true,
-		vexpand = true,
-		vertical = true,
-		class_name = "power-menu-entry",
-		Widget.Button({
-			on_clicked = function()
-				local cmd = {
-					poweroff = "systemctl poweroff",
-					reboot = "systemctl reboot",
-					lock = "sleep 0.1 && swaylock",
-					suspend = "sleep 0.1 && swaylock & systemctl suspend",
-					signout = "niri msg action quit",
-				}
-
-				Cassiopea.windows.hide(Cassiopea.windows.window_name.power_menu)
-				astal.exec(string.format('bash -c "%s"', cmd[action]))
-			end,
-			Widget.Box({
-				vertical = true,
-				class_name = "system-button",
-				Widget.Label({
-					label = icon,
-				}),
-			}),
-		}),
-		Widget.Label({
-			label = label,
-			class_name = "label",
-		}),
-	})
-end
+local PowerMenuButton = require("lua.components.power_menu_buttons").PowerMenuButton
 
 return function()
 	return Widget.Window({
@@ -58,11 +22,11 @@ return function()
 		end,
 		Widget.Box({
 			class_name = "power-menu",
-			SysButton("poweroff", "Power off", ""),
-			SysButton("reboot", "Reboot", "󰜉"),
-			SysButton("lock", "Lock", ""),
-			SysButton("suspend", "Suspend", "󰤄"),
-			SysButton("signout", "Sign out", "󰗼"),
+			PowerMenuButton("poweroff", "Power off"),
+			PowerMenuButton("reboot", "Reboot"),
+			PowerMenuButton("lock", "Lock"),
+			PowerMenuButton("suspend", "Suspend"),
+			PowerMenuButton("signout", "Sign out"),
 		}),
 	})
 end

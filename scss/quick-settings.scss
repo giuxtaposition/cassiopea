@@ -19,33 +19,19 @@ window#quick-settings {
     border-radius: 100%;
   }
 
-  .sign-out {
-    background-color: colors.$surfaceVariant;
-    color: colors.$onSurface;
-    border-radius: 1rem;
-    padding: 0 1rem;
-    margin: 0.35rem 0;
-    margin-left: 0.5rem;
-    transition: 0.3s;
-    font-weight: bold;
-
-    &:hover {
-      background-color: color.mix(
-        colors.$surfaceVariant,
-        colors.$onSurfaceVariant,
-        70%
-      );
+  .power-menu-buttons {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    button {
+      @include lib.hovered-button;
+      background-color: colors.$surfaceVariant;
+      padding: 0.5rem;
+      border-radius: 50%;
     }
   }
 
   .time {
     font-size: 1.4rem;
-    font-weight: bold;
-  }
-
-  .separator {
-    font-size: 1.4rem;
-    margin: 0 0.25rem;
     font-weight: bold;
   }
 

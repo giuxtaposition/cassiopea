@@ -37,7 +37,7 @@ M.NightLightIcon = function()
 			return enabled and "Enabled" or "Disabled"
 		end),
 		label = night_light_enabled(function(enabled)
-			return enabled and Cassiopea.icons.eye_shield.enabled or Cassiopea.icons.eye_shield.disabled
+			return enabled and Cassiopea.icons.night_light.enabled or Cassiopea.icons.night_light.disabled
 		end),
 	})
 end
