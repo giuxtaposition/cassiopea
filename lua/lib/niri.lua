@@ -40,14 +40,18 @@ end
 
 ---@param app_id string
 M.focus_window = function(app_id)
-	astal.exec_async({ "bash", "-c", "niri msg -j windows" }, function(result, err)
-		local decoded = Cassiopea.json.decode(result)
-		local window_id = Cassiopea.table.find(decoded, function(window)
-			return window.app_id == app_id
-		end).id
+	astal.exec_async('bash -c "niri msg -j windows"', function(result, err)
+		if result then
+			local decoded = Cassiopea.json.decode(result)
+			local window_id = Cassiopea.table.find(decoded, function(window)
+				return window.app_id == app_id
+			end).id
 
-		if window_id ~= nil then
-			astal.exec_async(string.format("niri msg action focus-window --id %d", window_id))
+			if window_id ~= nil then
+				astal.exec_async(string.format("niri msg action focus-window --id %d", window_id))
+			end
+		else
+			print(err)
 		end
 	end)
 end
