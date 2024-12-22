@@ -25,8 +25,7 @@ window#quick-settings {
     button {
       @include lib.hovered-button;
       background-color: colors.$surfaceVariant;
-      padding: 0.5rem;
-      border-radius: 50%;
+      border-radius: 2rem;
     }
   }
 
@@ -105,42 +104,66 @@ window#quick-settings {
     }
   }
 
-  .volume-slider {
-    trough {
-      background-color: colors.$surfaceVariant;
-      border-radius: 1rem;
-    }
+  .volume {
+    .volume-slider {
+      margin-left: 1rem;
+      margin-right: 1rem;
 
-    highlight {
-      background-color: colors.$primary;
-      min-height: 0.8rem;
-      border-radius: 1rem;
-    }
+      trough {
+        background-color: colors.$surfaceVariant;
+        border-radius: 1rem;
+      }
 
-    slider {
-      background-color: colors.$primary;
-      border-radius: 1rem;
-      min-height: 1.2rem;
-      min-width: 1.2rem;
-      margin: -0.2em;
-    }
+      highlight {
+        background-color: colors.$primary;
+        min-height: 0.8rem;
+        border-radius: 1rem;
+      }
 
-    & .muted {
-      highlight,
       slider {
-        background-color: colors.$onSurfaceVariant;
+        background-color: colors.$primary;
+        border-radius: 1rem;
+        min-height: 1.2rem;
+        min-width: 1.2rem;
+        margin: -0.2em;
+      }
+
+      & .muted {
+        highlight,
+        slider {
+          background-color: colors.$onSurfaceVariant;
+        }
       }
     }
-  }
 
-  .volume-mute-button {
-    @include lib.hovered-button;
-    margin-right: 0.75rem;
-    font-size: 1.25rem;
-    min-width: 2rem;
-    border-radius: 2rem;
-    transition: 0.3s;
-    padding: 0 0.3rem 0 0.2rem;
+    .volume-button {
+      @include lib.hovered-button;
+      margin-left: 0.1rem;
+      font-size: 1.25rem;
+      min-width: 2rem;
+      border-radius: 2rem;
+      transition: 0.3s;
+      padding: 0 0.3rem 0 0.2rem;
+    }
+
+    .device-list {
+      .device-item {
+        @include lib.hovered-button;
+        border-radius: 1rem;
+        padding: 0.25rem 1rem;
+        .icon {
+          margin-right: 1rem;
+          font-size: 1rem;
+        }
+        & .active {
+          color: colors.$primary;
+        }
+
+        &:hover .active {
+          color: colors.$base;
+        }
+      }
+    }
   }
 
   .player {

@@ -105,7 +105,6 @@ window#bar {
     transition: 0.3s;
 
     .indicator-icon {
-      margin: 0 0.55rem;
       font-size: 1.5rem;
     }
     @include lib.hovered-button;

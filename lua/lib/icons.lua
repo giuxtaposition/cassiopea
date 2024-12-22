@@ -3,11 +3,11 @@ local M = {}
 
 M.volume = {
 	microphone = {
-		muted = "󰍭",
-		volume = { "󰍬", "󰍬", "󰍬" },
+		muted = "󰍭 ",
+		volume = { "󰍬 ", "󰍬 ", "󰍬 " },
 	},
 	speaker = {
-		muted = "󰸈",
+		muted = "󰸈 ",
 		volume = { " ", " ", " " },
 	},
 }
@@ -27,62 +27,62 @@ M.volume_icon = function(volume, type)
 end
 
 M.network = {
-	["network-wireless-acquiring-symbolic"] = "󰤯",
-	["network-wireless-disabled-symbolic"] = "󰤭",
-	["network-wireless-offline-symbolic"] = "󰤩",
-	["network-wireless-signal-excellent-symbolic"] = "󰤨",
-	["network-wireless-signal-good-symbolic"] = "󰤥",
-	["network-wireless-signal-ok-symbolic"] = "󰤢",
-	["network-wireless-signal-weak-symbolic"] = "󰤟",
-	["network-wireless-signal-none-symbolic"] = "󰤯",
-	["network-wireless-no-route-symbolic"] = "󰤫",
+	["network-wireless-acquiring-symbolic"] = "󰤯 ",
+	["network-wireless-disabled-symbolic"] = "󰤭 ",
+	["network-wireless-offline-symbolic"] = "󰤩 ",
+	["network-wireless-signal-excellent-symbolic"] = "󰤨 ",
+	["network-wireless-signal-good-symbolic"] = "󰤥 ",
+	["network-wireless-signal-ok-symbolic"] = "󰤢 ",
+	["network-wireless-signal-weak-symbolic"] = "󰤟 ",
+	["network-wireless-signal-none-symbolic"] = "󰤯 ",
+	["network-wireless-no-route-symbolic"] = "󰤫 ",
 }
 
 M.battery = {
-	["battery-level-100-charged-symbolic"] = "󰂅",
-	["battery-level-90-charging-symbolic"] = "󰂋",
-	["battery-level-80-charging-symbolic"] = "󰂊",
-	["battery-level-70-charging-symbolic"] = "󰂉",
-	["battery-level-60-charging-symbolic"] = "󰂉",
-	["battery-level-50-charging-symbolic"] = "󰢝",
-	["battery-level-40-charging-symbolic"] = "󰂈",
-	["battery-level-30-charging-symbolic"] = "󰂇",
-	["battery-level-20-charging-symbolic"] = "󰂆",
-	["battery-level-10-charging-symbolic"] = "󰢜",
-	["battery-level-100-symbolic"] = "󰁹",
-	["battery-level-90-symbolic"] = "󰂂",
-	["battery-level-80-symbolic"] = "󰂂",
-	["battery-level-70-symbolic"] = "󰂂",
-	["battery-level-60-symbolic"] = "󰁿",
-	["battery-level-50-symbolic"] = "󰁿",
-	["battery-level-40-symbolic"] = "󰁿",
-	["battery-level-30-symbolic"] = "󰁿",
-	["battery-level-20-symbolic"] = "󰁻",
-	["battery-level-10-symbolic"] = "󰁻",
-	["battery-level-0-symbolic"] = "󰂎",
+	["battery-level-100-charged-symbolic"] = "󰂅 ",
+	["battery-level-90-charging-symbolic"] = "󰂋 ",
+	["battery-level-80-charging-symbolic"] = "󰂊 ",
+	["battery-level-70-charging-symbolic"] = "󰂉 ",
+	["battery-level-60-charging-symbolic"] = "󰂉 ",
+	["battery-level-50-charging-symbolic"] = "󰢝 ",
+	["battery-level-40-charging-symbolic"] = "󰂈 ",
+	["battery-level-30-charging-symbolic"] = "󰂇 ",
+	["battery-level-20-charging-symbolic"] = "󰂆 ",
+	["battery-level-10-charging-symbolic"] = "󰢜 ",
+	["battery-level-100-symbolic"] = "󰁹 ",
+	["battery-level-90-symbolic"] = "󰂂 ",
+	["battery-level-80-symbolic"] = "󰂂 ",
+	["battery-level-70-symbolic"] = "󰂂 ",
+	["battery-level-60-symbolic"] = "󰁿 ",
+	["battery-level-50-symbolic"] = "󰁿 ",
+	["battery-level-40-symbolic"] = "󰁿 ",
+	["battery-level-30-symbolic"] = "󰁿 ",
+	["battery-level-20-symbolic"] = "󰁻 ",
+	["battery-level-10-symbolic"] = "󰁻 ",
+	["battery-level-0-symbolic"] = "󰂎 ",
 }
 
 M.bluetooth = {
-	enabled = "󰂯",
-	disabled = "󰂲",
+	enabled = "󰂯 ",
+	disabled = "󰂲 ",
 }
 
 M.do_not_disturb = {
-	enabled = "󰂛",
-	disabled = "󰂚",
+	enabled = "󰂛 ",
+	disabled = "󰂚 ",
 }
 
 M.night_light = {
-	enabled = "󰈈",
-	disabled = "󰈉",
+	enabled = "󰈈 ",
+	disabled = "󰈉 ",
 }
 
 M.power_menu = {
-	poweroff = "",
-	reboot = "",
-	lock = "",
-	suspend = "󰤄",
-	signout = "󰗽",
+	poweroff = " ",
+	reboot = " ",
+	lock = " ",
+	suspend = "󰤄 ",
+	signout = "󰗽 ",
 }
 
 return M
