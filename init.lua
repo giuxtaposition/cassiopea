@@ -17,13 +17,25 @@ App:start({
 	instance_name = "cassiopea",
 	css = css,
 	main = function()
-		for _, mon in pairs(App.monitors) do
-			Bar(mon)
-			Notifications(mon)
+		for _, gdkmonitor in pairs(App.monitors) do
+			Windows.bars[gdkmonitor] = Bar(gdkmonitor, Cassiopea.niri.get_monitor_name(gdkmonitor.model))
+			Windows.notifications[gdkmonitor] = Notifications(gdkmonitor)
 		end
 		Launcher()
 		QuickSettings()
 		PowerMenu()
+
+		App.on_monitor_added = function(_, mon)
+			Windows.bars[mon] = Bar(mon, Cassiopea.niri.get_monitor_name(mon.model))
+			Windows.notifications[mon] = Notifications(mon)
+		end
+
+		App.on_monitor_removed = function(_, mon)
+			Windows.bars[mon].destroy()
+			Windows.notifications[mon].destroy()
+			Windows.bars[mon] = nil
+			Windows.notifications[mon] = nil
+		end
 	end,
 	---@param request string
 	---@param res fun(response: any): nil

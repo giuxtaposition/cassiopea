@@ -13,7 +13,7 @@ local Indicators = require("lua.components.indicators")
 local DateTime = require("lua.components.date_time")
 local SpotifyIndicator = require("lua.components.player").SpotifyIndicator
 
-return function(gdkmonitor)
+return function(gdkmonitor, monitor_name)
 	local WindowAnchor = astal.require("Astal", "3.0").WindowAnchor
 
 	return Widget.Window({
@@ -28,7 +28,7 @@ return function(gdkmonitor)
 				hexpand = true,
 				spacing = 12,
 				Logo(),
-				Workspaces(),
+				Workspaces(monitor_name),
 			}),
 			Widget.Box({
 				DateTime("%H:%M - %A %d"),

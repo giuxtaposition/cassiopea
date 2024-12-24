@@ -18,7 +18,7 @@ end
 ---@generic T
 ---@param arr T[]
 ---@param condition fun(T): boolean
-function M.find(arr, condition)
+function M.find_in_arr(arr, condition)
 	for _, value in ipairs(arr) do
 		if condition(value) then
 			return value
@@ -41,17 +41,29 @@ function M.filter(arr, predicate)
 	return result
 end
 
----@param tbl table
+---@generic T
+---@param arr T[]
 ---@param first integer
 ---@param last? integer
-function M.slice(tbl, first, last)
+function M.slice(arr, first, last)
 	local sliced = {}
 
-	for i = first, last or #tbl, 1 do
-		sliced[#sliced + 1] = tbl[i]
+	for i = first, last or #arr, 1 do
+		sliced[#sliced + 1] = arr[i]
 	end
 
 	return sliced
+end
+---@param tbl table<any, any>
+---@param condition fun(element: any): boolean
+---@return any, any
+function M.find_in_tbl(tbl, condition)
+	for key, element in pairs(tbl) do
+		if condition(element) then
+			return key, element
+		end
+	end
+	return nil, nil
 end
 
 function M.varmap(initial)
