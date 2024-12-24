@@ -13,6 +13,11 @@ local css = "/tmp/style.css"
 
 astal.exec("sass " .. scss .. " " .. css)
 
+local Windows = {
+	bars = {},
+	notifications = {},
+}
+
 App:start({
 	instance_name = "cassiopea",
 	css = css,
