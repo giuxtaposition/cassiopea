@@ -1,10 +1,14 @@
 local Widget = require("astal.gtk3.widget")
 
-local function WorkspacesComponent()
+---@param monitor_model string
+local function WorkspacesComponent(monitor_model)
 	return Widget.Box({
 		class_name = "workspaces",
 		Cassiopea.niri.workspaces(function(workspaces)
-			return Cassiopea.table.map(workspaces, function(workspace)
+			local workspaces_for_monitor = Cassiopea.table.filter(workspaces, function(workspace)
+				return workspace.monitor == Cassiopea.niri.get_monitor_name(monitor_model)
+			end)
+			return Cassiopea.table.map(workspaces_for_monitor, function(workspace)
 				return Widget.Button({
 					on_click = function()
 						Cassiopea.niri.focus_workspace(workspace.index)
@@ -22,13 +26,14 @@ local function WorkspacesComponent()
 	})
 end
 
-local function Workspaces()
+---@param monitor_model string
+local function Workspaces(monitor_model)
 	return Widget.EventBox({
 		class_name = "workspaces panel-button",
 		Widget.Box({
 			Widget.EventBox({
 				class_name = "eventbox",
-				WorkspacesComponent(),
+				WorkspacesComponent(monitor_model),
 			}),
 		}),
 	})

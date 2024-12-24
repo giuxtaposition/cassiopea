@@ -26,14 +26,14 @@ describe("Table lib", function()
 		end)
 	end)
 
-	describe("find", function()
+	describe("find_in_arr", function()
 		it("should return the first element that satisfies the condition", function()
 			assert.are_same(
 				{
 					value = "world",
 					key = 2,
 				},
-				table.find(arr, function(v)
+				table.find_in_arr(arr, function(v)
 					return v.value == "world"
 				end)
 			)
@@ -42,7 +42,7 @@ describe("Table lib", function()
 		it("should return nil if no element satisfies the condition", function()
 			assert.are_equal(
 				nil,
-				table.find(arr, function(v)
+				table.find_in_arr(arr, function(v)
 					return v.value == "not found"
 				end)
 			)
@@ -81,6 +81,31 @@ describe("Table lib", function()
 					key = 2,
 				},
 			}, table.slice(arr, 2))
+		end)
+	end)
+
+	describe("find_in_tbl", function()
+		local tbl = {
+			id1 = {
+				a = "hello",
+				b = "world",
+			},
+			id2 = {
+				a = "lua",
+				b = "table",
+			},
+		}
+
+		it("should return the element that matches condition", function()
+			local key, value = table.find_in_tbl(tbl, function(element)
+				return element.a == "lua"
+			end)
+
+			assert.are_equal("id2", key)
+			assert.are_same({
+				a = "lua",
+				b = "table",
+			}, value)
 		end)
 	end)
 end)

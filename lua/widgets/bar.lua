@@ -28,7 +28,7 @@ return function(gdkmonitor)
 				hexpand = true,
 				spacing = 12,
 				Logo(),
-				Workspaces(),
+				Workspaces(gdkmonitor.model),
 			}),
 			Widget.Box({
 				DateTime("%H:%M - %A %d"),

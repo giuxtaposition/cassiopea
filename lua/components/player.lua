@@ -158,14 +158,14 @@ M.SpotifyIndicator = function()
 				return false
 			end
 
-			return Cassiopea.table.find(players, function(player)
+			return Cassiopea.table.find_in_arr(players, function(player)
 				return player.entry == "spotify"
 			end)
 		end),
 		Widget.Button({
 			class_name = "spotify-indicator",
 			on_clicked = function()
-				local player = Cassiopea.table.find(mpris.players, function(player)
+				local player = Cassiopea.table.find_in_arr(mpris.players, function(player)
 					return player.entry == "spotify"
 				end)
 				if player == nil then

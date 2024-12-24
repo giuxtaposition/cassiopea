@@ -27,12 +27,29 @@ M.workspaces = Variable({
 	local workspaces = {}
 
 	for _, item in ipairs(decode) do
-		workspaces[item.idx] =
-			{ index = item.idx, is_active = (item.active_window_id ~= nil), is_focused = item.is_focused }
+		table.insert(workspaces, {
+			monitor = item.output,
+			index = item.idx,
+			is_active = (item.active_window_id ~= nil),
+			is_focused = item.is_focused,
+		})
 	end
+
+	table.sort(workspaces, function(a, b)
+		return a.index < b.index
+	end)
 
 	return workspaces
 end)
+
+M.get_monitor_name = function(monitor_model)
+	local outputs = astal.exec("niri msg -j outputs")
+	local decoded = Cassiopea.json.decode(outputs)
+	local monitor = Cassiopea.table.find_in_tbl(decoded, function(monitor)
+		return monitor.model == monitor_model
+	end)
+	return monitor
+end
 
 M.focus_workspace = function(idx)
 	astal.exec(string.format('bash -c "niri msg action focus-workspace %d"', idx))
@@ -43,7 +60,7 @@ M.focus_window = function(app_id)
 	astal.exec_async('bash -c "niri msg -j windows"', function(result, err)
 		if result then
 			local decoded = Cassiopea.json.decode(result)
-			local window_id = Cassiopea.table.find(decoded, function(window)
+			local window_id = Cassiopea.table.find_in_arr(decoded, function(window)
 				return window.app_id == app_id
 			end).id
 
