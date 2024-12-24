@@ -13,17 +13,34 @@ local css = "/tmp/style.css"
 
 astal.exec("sass " .. scss .. " " .. css)
 
+local Windows = {
+	bars = {},
+	notifications = {},
+}
+
 App:start({
 	instance_name = "cassiopea",
 	css = css,
 	main = function()
 		for _, mon in pairs(App.monitors) do
-			Bar(mon)
-			Notifications(mon)
+			Windows.bars[mon] = Bar(mon)
+			Windows.notifications[mon] = Notifications(mon)
 		end
 		Launcher()
 		QuickSettings()
 		PowerMenu()
+
+		App.on_monitor_added = function(_, mon)
+			Windows.bars[mon] = Bar(mon)
+			Windows.notifications[mon] = Notifications(mon)
+		end
+
+		App.on_monitor_removed = function(_, mon)
+			Windows.bars[mon].destroy()
+			Windows.notifications[mon].destroy()
+			Windows.bars[mon] = nil
+			Windows.notifications[mon] = nil
+		end
 	end,
 	---@param request string
 	---@param res fun(response: any): nil
