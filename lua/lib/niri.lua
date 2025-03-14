@@ -6,6 +6,7 @@ local M = {}
 
 M.mapping_keyboard_layout = {
 	["English (US)"] = "en",
+	["English (intl., with AltGr dead keys)"] = "en",
 	["Italian"] = "it",
 }
 
@@ -13,7 +14,11 @@ M.keyboard_layout = Variable("en"):poll(1000, 'bash -c "niri msg -j keyboard-lay
 	local decoded = Cassiopea.json.decode(result)
 	local active_layout = decoded.names[decoded.current_idx + 1]
 
-	return M.mapping_keyboard_layout[active_layout]
+	if string.find(active_layout, "English") then
+		return "en"
+	else
+		return "it"
+	end
 end)
 
 M.switch_keyboard_layout = function()
