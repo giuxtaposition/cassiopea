@@ -1,0 +1,14 @@
+@use "sass:color";
+@use "colors";
+@use "lib";
+
+window#bar {
+  .date-time {
+    font-size: 1rem;
+
+    button {
+      background-color: transparent;
+      border: none;
+    }
+  }
+}

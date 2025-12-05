@@ -1,0 +1,9 @@
+@use "colors.scss";
+@use "lib.scss";
+@use "bar.scss";
+
+window {
+  > box {
+    @include lib.window;
+  }
+}
