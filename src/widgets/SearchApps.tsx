@@ -4,7 +4,7 @@ import { toggleWindow } from "../utils/window"
 export function SearchApps() {
   return (
     <IconButton
-      iconName="system-search-symbolic"
+      iconName="search-symbolic"
       onClick={() => {
         toggleWindow("applauncher")
       }}

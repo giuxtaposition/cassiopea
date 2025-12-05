@@ -4,6 +4,7 @@ import { DateTime } from "./DateTime"
 import { WindowName } from "../utils/window"
 import { onCleanup } from "ags"
 import { SearchApps } from "./SearchApps"
+import { Tray } from "./Tray"
 
 const windowName: WindowName = "bar"
 
@@ -35,6 +36,9 @@ export default function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
         </box>
         <box $type="center">
           <DateTime format="%H:%M - %A %d" />
+        </box>
+        <box $type="end">
+          <Tray />
         </box>
       </centerbox>
     </window>

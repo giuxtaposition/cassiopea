@@ -12,7 +12,7 @@ export function IconButton({
   if (popoverContent) {
     return (
       <menubutton class="icon-button">
-        <image iconName={iconName} pixelSize={24} />
+        <image iconName={iconName} pixelSize={20} />
         <popover>{popoverContent}</popover>
       </menubutton>
     )
@@ -20,7 +20,7 @@ export function IconButton({
 
   return (
     <button class="icon-button" onClicked={onClick}>
-      <image iconName={iconName} pixelSize={24} />
+      <image iconName={iconName} pixelSize={20} />
     </button>
   )
 }

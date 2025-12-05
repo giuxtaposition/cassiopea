@@ -99,7 +99,7 @@ export default function Applauncher({
             {(app) => (
               <button onClicked={() => launch(app)}>
                 <box class="applauncher-item">
-                  <image iconName={app.iconName} pixel_size={24} />
+                  <image iconName={app.iconName} pixelSize={20} />
                   <label
                     class="applauncher-item-label"
                     label={app.name}

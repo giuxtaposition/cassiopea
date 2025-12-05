@@ -11,10 +11,8 @@ window#applauncher {
     padding: 1rem;
   }
 
-  button:hover {
-    background-color: colors.$surface;
-    color: colors.$text;
-    border-radius: 1rem;
+  button {
+    @include lib.menubutton;
   }
 
   .applauncher-item {

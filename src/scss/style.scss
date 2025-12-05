@@ -9,14 +9,20 @@ window {
   }
 }
 
-button {
+button,
+modelbutton {
   background-color: transparent;
   border: none;
+  border-radius: 0.5rem;
 }
 
 button:hover {
   background-color: colors.$secondary;
   color: colors.$base;
+}
+
+modelbutton {
+  @include lib.menubutton;
 }
 
 .icon-button {
@@ -27,4 +33,15 @@ button:hover {
 
 entry {
   all: unset;
+}
+
+popover contents {
+  all: unset;
+  @include lib.window;
+  border: none;
+}
+
+popover arrow {
+  background: none;
+  border: none;
 }

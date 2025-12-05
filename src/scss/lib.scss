@@ -7,3 +7,11 @@
   color: colors.$text;
   box-shadow: 0 0 4px 2px colors.$surface;
 }
+
+@mixin menubutton {
+  &:hover,
+  &:active {
+    background-color: colors.$surface;
+    color: colors.$text;
+  }
+}

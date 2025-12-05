@@ -6,6 +6,7 @@ import Applauncher from "./src/widgets/Applauncher"
 
 app.start({
   css: style,
+  icons: `${SRC}/icons`,
   main() {
     const monitors = createBinding(app, "monitors")
 
