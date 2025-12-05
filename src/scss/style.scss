@@ -1,9 +1,30 @@
 @use "colors.scss";
 @use "lib.scss";
 @use "bar.scss";
+@use "applauncher.scss";
 
 window {
   > box {
     @include lib.window;
   }
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+button:hover {
+  background-color: colors.$secondary;
+  color: colors.$base;
+}
+
+.icon-button {
+  > button {
+    padding: 0.25rem;
+  }
+}
+
+entry {
+  all: unset;
 }

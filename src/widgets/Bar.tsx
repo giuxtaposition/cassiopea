@@ -1,15 +1,26 @@
 import app from "ags/gtk4/app"
 import { Astal, Gdk } from "ags/gtk4"
-import { DateTime } from "../components/DateTime"
+import { DateTime } from "./DateTime"
 import { WindowName } from "../utils/window"
+import { onCleanup } from "ags"
+import { SearchApps } from "./SearchApps"
 
 const windowName: WindowName = "bar"
 
 export default function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
+  let win: Astal.Window
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
+
+  onCleanup(() => {
+    // Root components (windows) are not automatically destroyed.
+    // When the monitor is disconnected from the system, this callback
+    // is run from the parent <For> which allows us to destroy the window
+    win.destroy()
+  })
 
   return (
     <window
+      $={(self) => (win = self)}
       visible
       name={windowName}
       class={windowName}
@@ -19,6 +30,9 @@ export default function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
       application={app}
     >
       <centerbox>
+        <box $type="start">
+          <SearchApps />
+        </box>
         <box $type="center">
           <DateTime format="%H:%M - %A %d" />
         </box>

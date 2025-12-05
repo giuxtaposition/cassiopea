@@ -1,0 +1,37 @@
+@use "sass:color";
+@use "colors";
+@use "lib";
+
+window#applauncher {
+  margin-top: 4rem;
+  margin-left: 0.5rem;
+
+  box#launcher-content {
+    min-width: 300px;
+    padding: 1rem;
+  }
+
+  button:hover {
+    background-color: colors.$surface;
+    color: colors.$text;
+    border-radius: 1rem;
+  }
+
+  .applauncher-item {
+    margin: 0.25rem;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+
+    .applauncher-item-label {
+      margin-left: 0.5rem;
+    }
+  }
+
+  entry {
+    background: colors.$highlight-low;
+    margin: 0.25rem;
+    padding: 1rem 0.5rem;
+    font-size: 1.25rem;
+    border-radius: 1rem;
+  }
+}
