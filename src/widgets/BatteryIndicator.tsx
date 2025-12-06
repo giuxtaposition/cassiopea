@@ -3,6 +3,7 @@ import AstalBattery from "gi://AstalBattery"
 import AstalPowerProfiles from "gi://AstalPowerProfiles"
 import { createBinding, createComputed } from "ags"
 import { IconButton } from "../components/IconButton"
+import { icons } from "../lib/icons"
 
 export function BatteryIndicator() {
   let popover: Gtk.Popover
@@ -21,16 +22,16 @@ export function BatteryIndicator() {
       state === AstalBattery.State.CHARGING ||
       state === AstalBattery.State.FULLY_CHARGED
     ) {
-      return "battery-charging-symbolic"
+      return icons.battery.charging
     } else {
       if (percentage <= 0.25) {
-        return "battery-1-symbolic"
+        return icons.battery.level1
       } else if (percentage <= 0.5) {
-        return "battery-2-symbolic"
+        return icons.battery.level2
       } else if (percentage <= 0.75) {
-        return "battery-3-symbolic"
+        return icons.battery.level3
       } else {
-        return "battery-4-symbolic"
+        return icons.battery.level4
       }
     }
   })

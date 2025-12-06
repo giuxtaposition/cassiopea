@@ -1,9 +1,10 @@
 import Gtk from "gi://Gtk?version=4.0"
 import AstalTray from "gi://AstalTray"
 import { For, createBinding, createState } from "ags"
+import { icons } from "../lib/icons"
 
 const IconNameMapping: Record<string, string> = {
-  "blueman-tray": "bluetooth-symbolic",
+  "blueman-tray": icons.bluetooth,
 }
 
 export function Tray() {
@@ -12,8 +13,8 @@ export function Tray() {
   const items = createBinding(tray, "items")
 
   const icon = (visible: boolean) => {
-    if (visible) return "chevron-right-symbolic"
-    else return "chevron-left-symbolic"
+    if (visible) return icons.arrow.right
+    else return icons.arrow.left
   }
 
   const init = (btn: Gtk.MenuButton, item: AstalTray.TrayItem) => {
