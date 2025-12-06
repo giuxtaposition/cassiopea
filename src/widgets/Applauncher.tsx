@@ -97,7 +97,7 @@ export default function Applauncher({
         <box orientation={Gtk.Orientation.VERTICAL}>
           <For each={list}>
             {(app) => (
-              <button onClicked={() => launch(app)}>
+              <button onClicked={() => launch(app)} class="menubutton">
                 <box class="applauncher-item">
                   <image iconName={app.iconName} pixelSize={20} />
                   <label

@@ -22,6 +22,7 @@
 
     astalPackages = with ags.packages.${system}; [
       astal4
+      powerprofiles
       battery
       mpris
       wireplumber
@@ -38,6 +39,7 @@
       ++ [
         pkgs.lsof
         pkgs.wl-gammarelay-rs
+        pkgs.upower
       ];
   in {
     packages.${system} = {

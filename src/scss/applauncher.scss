@@ -11,10 +11,6 @@ window#applauncher {
     padding: 1rem;
   }
 
-  button {
-    @include lib.menubutton;
-  }
-
   .applauncher-item {
     margin: 0.25rem;
     padding: 0.5rem;

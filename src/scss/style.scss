@@ -21,7 +21,8 @@ button:hover {
   color: colors.$base;
 }
 
-modelbutton {
+modelbutton,
+.menubutton {
   @include lib.menubutton;
 }
 
