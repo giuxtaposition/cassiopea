@@ -6,6 +6,7 @@ import { onCleanup } from "ags"
 import { SearchApps } from "./SearchApps"
 import { Tray } from "./Tray"
 import { BatteryIndicator } from "./BatteryIndicator"
+import { WifiIndicator } from "./WifiIndicator"
 
 const windowName: WindowName = "bar"
 
@@ -40,6 +41,7 @@ export default function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
         </box>
         <box $type="end">
           <Tray />
+          <WifiIndicator />
           <BatteryIndicator />
         </box>
       </centerbox>

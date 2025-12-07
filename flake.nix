@@ -40,6 +40,7 @@
         pkgs.lsof
         pkgs.wl-gammarelay-rs
         pkgs.upower
+        pkgs.networkmanager
       ];
   in {
     packages.${system} = {

@@ -12,4 +12,14 @@ export const icons = {
   },
   bluetooth: "bluetooth-symbolic",
   search: "search-symbolic",
+  network: {
+    wifi: {
+      excellent: "wifi-signal-excellent-symbolic",
+      good: "wifi-signal-good-symbolic",
+      ok: "wifi-signal-ok-symbolic",
+      weak: "wifi-signal-weak-symbolic",
+      disabled: "wifi-disabled-symbolic",
+    },
+  },
+  checkmark: "checkmark-symbolic",
 }
