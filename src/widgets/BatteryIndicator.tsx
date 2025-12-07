@@ -55,7 +55,16 @@ export function BatteryIndicator() {
               }}
               class="menubutton"
             >
-              <label label={profile} xalign={0} />
+              <box spacing={4}>
+                <label label={profile} />
+                <image
+                  iconName={icons.checkmark}
+                  visible={createBinding(
+                    powerProfiles,
+                    "activeProfile",
+                  )((active) => active === profile)}
+                />
+              </box>
             </button>
           ))}
         </box>
