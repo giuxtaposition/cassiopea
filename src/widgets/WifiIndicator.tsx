@@ -3,6 +3,7 @@ import AstalNetwork from "gi://AstalNetwork"
 import { For, With, createBinding, createComputed } from "ags"
 import { icons } from "../lib/icons"
 import { IconButton } from "../components/IconButton"
+import { MenuButton } from "../components/MenuButton"
 
 export function WifiIndicator() {
   const network = AstalNetwork.get_default()
@@ -74,27 +75,21 @@ export function WifiIndicator() {
                 <box orientation={Gtk.Orientation.VERTICAL}>
                   <For each={createBinding(wifi, "accessPoints")(sorted)}>
                     {(ap: AstalNetwork.AccessPoint) => (
-                      <button onClicked={() => connect(ap)}>
-                        <box spacing={4}>
-                          <image
-                            iconName={createBinding(
-                              ap,
-                              "strength",
-                            )((strength) => getIconNameForStrength(strength))}
-                          />
-                          <label label={createBinding(ap, "ssid")} />
-                          <label
-                            label={createBinding(ap, "frequency")(formatToHz)}
-                          />
-                          <image
-                            iconName={icons.checkmark}
-                            visible={createBinding(
-                              wifi,
-                              "activeAccessPoint",
-                            )((active) => active === ap)}
-                          />
-                        </box>
-                      </button>
+                      <MenuButton
+                        onClicked={() => connect(ap)}
+                        iconName={createBinding(
+                          ap,
+                          "strength",
+                        )((strength) => getIconNameForStrength(strength))}
+                        labels={[
+                          createBinding(ap, "ssid"),
+                          createBinding(ap, "frequency")(formatToHz),
+                        ]}
+                        active={createBinding(
+                          wifi,
+                          "activeAccessPoint",
+                        )((active) => active === ap)}
+                      />
                     )}
                   </For>
                 </box>

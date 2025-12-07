@@ -4,6 +4,7 @@ import AstalPowerProfiles from "gi://AstalPowerProfiles"
 import { createBinding, createComputed } from "ags"
 import { IconButton } from "../components/IconButton"
 import { icons } from "../lib/icons"
+import { MenuButton } from "../components/MenuButton"
 
 export function BatteryIndicator() {
   let popover: Gtk.Popover
@@ -48,24 +49,17 @@ export function BatteryIndicator() {
       popoverContent={
         <box orientation={Gtk.Orientation.VERTICAL} spacing={2}>
           {powerProfiles.get_profiles().map(({ profile }) => (
-            <button
+            <MenuButton
               onClicked={() => {
                 setProfile(profile)
                 popover.hide()
               }}
-              class="menubutton"
-            >
-              <box spacing={4}>
-                <label label={profile} />
-                <image
-                  iconName={icons.checkmark}
-                  visible={createBinding(
-                    powerProfiles,
-                    "activeProfile",
-                  )((active) => active === profile)}
-                />
-              </box>
-            </button>
+              labels={[profile]}
+              active={createBinding(
+                powerProfiles,
+                "activeProfile",
+              )((active) => active === profile)}
+            />
           ))}
         </box>
       }
