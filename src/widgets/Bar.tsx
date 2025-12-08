@@ -7,6 +7,7 @@ import { SearchApps } from "./SearchApps"
 import { Tray } from "./Tray"
 import { BatteryIndicator } from "./BatteryIndicator"
 import { WifiIndicator } from "./WifiIndicator"
+import { AudioOutputIndicator } from "./AudioOutputIndicator"
 
 const windowName: WindowName = "bar"
 
@@ -39,9 +40,10 @@ export default function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
         <box $type="center">
           <DateTime format="%H:%M - %A %d" />
         </box>
-        <box $type="end">
+        <box $type="end" spacing={4}>
           <Tray />
           <WifiIndicator />
+          <AudioOutputIndicator />
           <BatteryIndicator />
         </box>
       </centerbox>

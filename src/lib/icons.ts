@@ -22,4 +22,10 @@ export const icons = {
     },
   },
   checkmark: "checkmark-symbolic",
+  volume: {
+    high: "volume-high-symbolic",
+    medium: "volume-medium-symbolic",
+    low: "volume-low-symbolic",
+    muted: "volume-muted-symbolic",
+  },
 }

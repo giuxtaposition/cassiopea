@@ -17,7 +17,7 @@ modelbutton {
 }
 
 button:hover {
-  background-color: colors.$secondary;
+  background-color: colors.$accent;
   color: colors.$base;
 }
 
@@ -45,4 +45,27 @@ popover contents {
 popover arrow {
   background: none;
   border: none;
+}
+
+scale {
+  padding: 0;
+
+  trough {
+    all: unset;
+    min-height: 1rem;
+    border-radius: 1rem;
+  }
+
+  highlight {
+    all: unset;
+    min-height: 1rem;
+    border-radius: 1rem;
+    background: colors.$accent;
+  }
+
+  slider {
+    all: unset;
+    border-radius: 1rem;
+    margin: 0;
+  }
 }
