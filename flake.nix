@@ -1,5 +1,5 @@
 {
-  description = "My Awesome Desktop Shell";
+  description = "My Awesome Desktop Shell – Cassiopea";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -14,12 +14,10 @@
     self,
     nixpkgs,
     ags,
+    ...
   }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    pname = "cassiopea";
-    entry = "app.tsx";
-
     astalPackages = with ags.packages.${system}; [
       astal4
       powerprofiles
@@ -44,39 +42,16 @@
       ];
   in {
     packages.${system} = {
-      default = pkgs.stdenv.mkDerivation {
-        name = pname;
-        src = ./.;
-
-        nativeBuildInputs = with pkgs; [
-          wrapGAppsHook3
-          gobject-introspection
-          ags.packages.${system}.default
-        ];
-
-        buildInputs = extraPackages ++ [pkgs.gjs];
-
-        installPhase = ''
-          runHook preInstall
-
-          mkdir -p $out/bin
-          mkdir -p $out/share
-          cp -r * $out/share
-          ags bundle ${entry} $out/bin/${pname} -d "SRC='$out/share'"
-
-          runHook postInstall
-        '';
-      };
+      default = self.packages.${system}.cassiopea;
+      cassiopea = import ./nix/package.nix {inherit pkgs ags system extraPackages;};
     };
 
-    devShells.${system} = {
-      default = pkgs.mkShell {
-        buildInputs = [
-          (ags.packages.${system}.default.override {
-            inherit extraPackages;
-          })
-        ];
-      };
+    devShells.${system}.default =
+      import ./nix/devshell.nix {inherit pkgs ags system extraPackages;};
+
+    homeManagerModules = {
+      default = self.homeManagerModules.cassiopea;
+      cassiopea = import ./nix/hm-module.nix self;
     };
   };
 }
