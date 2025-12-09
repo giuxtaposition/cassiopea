@@ -20,4 +20,14 @@ window#bar {
       }
     }
   }
+
+  .workspaces {
+    .app-button {
+      padding: 0.15rem;
+
+      &.urgent {
+        border: 1px solid colors.$error;
+      }
+    }
+  }
 }
