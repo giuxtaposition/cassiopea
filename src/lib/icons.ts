@@ -28,4 +28,5 @@ export const icons = {
     low: "volume-low-symbolic",
     muted: "volume-muted-symbolic",
   },
+  screenSharing: "screen-sharing-symbolic",
 }

@@ -70,3 +70,25 @@ scale {
     margin: 0;
   }
 }
+
+.icon-indicator {
+  color: colors.$accent;
+}
+
+.blink {
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  25% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 0.5;
+  }
+}
