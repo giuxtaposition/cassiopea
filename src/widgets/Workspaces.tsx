@@ -1,4 +1,4 @@
-import { Accessor, createComputed, For } from "gnim"
+import { Accessor, createComputed, For, With } from "gnim"
 import {
   deepCopy,
   filterEmptyWorkspacesAndWorkspaceInOtherMonitors,
@@ -9,7 +9,8 @@ import {
   Workspace,
   workspaces,
 } from "../utils/niri"
-import { Gdk } from "ags/gtk4"
+import { Gdk, Gtk } from "ags/gtk4"
+import { icons } from "../lib/icons"
 
 export function Workspaces({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
   const workspacesData: Accessor<Workspace[]> = createComputed(() => {
@@ -40,24 +41,45 @@ export function Workspaces({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
       <For each={workspacesData}>
         {(ws) => (
           <box spacing={2}>
-            <label label={`${ws.id}`} />
-            <box spacing={2}>
-              {ws.windows.map((window) => (
-                <button
-                  class={
-                    "app-button" +
-                    (window.isFocused ? " focused" : "") +
-                    (window.isUrgent ? " urgent" : "")
-                  }
-                  onClicked={async () => await focusWindow(window.id)}
+            <centerbox orientation={Gtk.Orientation.VERTICAL}>
+              <box
+                class="workspace-label"
+                $type="center"
+                orientation={Gtk.Orientation.VERTICAL}
+                spacing={2}
+              >
+                <revealer
+                  revealChild={ws.isFocused}
+                  transitionDuration={200}
+                  transitionType={Gtk.RevealerTransitionType.SWING_DOWN}
                 >
-                  <image
-                    iconName={getAppIconName(window.appId)}
-                    class={"app-icon"}
-                  />
-                </button>
-              ))}
-            </box>
+                  <image iconName={icons.dot} pixelSize={4} />
+                </revealer>
+                <label
+                  label={`${ws.id}`}
+                  class={ws.isFocused ? "focused" : ""}
+                />
+              </box>
+            </centerbox>
+            <centerbox orientation={Gtk.Orientation.VERTICAL}>
+              <box spacing={2} $type="center">
+                {ws.windows.map((window) => (
+                  <button
+                    class={
+                      "app-button" +
+                      (window.isFocused ? " focused" : "") +
+                      (window.isUrgent ? " urgent" : "")
+                    }
+                    onClicked={async () => await focusWindow(window.id)}
+                  >
+                    <image
+                      iconName={getAppIconName(window.appId)}
+                      class={"app-icon"}
+                    />
+                  </button>
+                ))}
+              </box>
+            </centerbox>
           </box>
         )}
       </For>

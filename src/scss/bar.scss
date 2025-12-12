@@ -29,6 +29,13 @@ window#bar {
         border: 1px solid colors.$error;
       }
     }
+
+    .workspace-label {
+      padding: 0rem;
+      image {
+        color: colors.$accent;
+      }
+    }
   }
 
   .quick-settings-button {

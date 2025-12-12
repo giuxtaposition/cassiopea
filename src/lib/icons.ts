@@ -48,4 +48,5 @@ export const icons = {
     next: "media-forward-symbolic",
     previous: "media-backward-symbolic",
   },
+  dot: "dot-symbolic",
 }
