@@ -4,17 +4,17 @@ import { createBinding, With } from "gnim"
 
 export function AudioVisualizer() {
   const cava = Cava.get_default()!
-  const bars = createBinding(cava, "values")
+  const canvasValues = createBinding(cava, "values")
 
   return (
-    <With value={bars}>
+    <With value={canvasValues}>
       {(values) =>
-        values.length > 0 && (
+        values.some((v) => v !== 0) && (
           <drawingarea
             widthRequest={150}
             class={"audio-visualizer"}
             $={(self) =>
-              self.set_draw_func((area, cr, width, height) => {
+              self.set_draw_func((_area, cr, _width, _height) => {
                 const h = self.get_allocated_height()
                 const w = self.get_allocated_width()
                 const bars = cava.get_bars()
@@ -26,6 +26,17 @@ export function AudioVisualizer() {
 
                 const barWidth = w / bars
                 const padding = 2
+
+                const silent = values.every((v) => v < 0.001)
+
+                if (silent) {
+                  const y = h * 1
+                  cr.setLineWidth(1)
+                  cr.moveTo(0, y)
+                  cr.lineTo(w, y)
+                  cr.stroke()
+                  return
+                }
 
                 for (let i = 0; i < bars; i++) {
                   const value = values[i] ?? 0
