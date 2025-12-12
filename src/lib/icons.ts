@@ -42,4 +42,10 @@ export const icons = {
     enabled: "bell-symbolic",
     disabled: "bell-off-symbolic",
   },
+  media: {
+    play: "media-play-symbolic",
+    pause: "media-pause-symbolic",
+    next: "media-forward-symbolic",
+    previous: "media-backward-symbolic",
+  },
 }

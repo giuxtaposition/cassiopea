@@ -1,5 +1,5 @@
 import app from "ags/gtk4/app"
-import { Astal, Gdk } from "ags/gtk4"
+import { Astal, Gdk, Gtk } from "ags/gtk4"
 import { DateTime } from "./DateTime"
 import { WindowName } from "../utils/window"
 import { onCleanup } from "ags"
@@ -11,6 +11,7 @@ import { AudioOutputIndicator } from "./AudioOutputIndicator"
 import { Workspaces } from "./Workspaces"
 import { ScreenSharingIndicator } from "./ScreenSharingIndicator"
 import { QuickSettings } from "./QuickSettings"
+import { MediaPlayer, mediaPlayerWidgetIsVisible } from "./MediaPlayer"
 
 const windowName: WindowName = "bar"
 
@@ -42,7 +43,18 @@ export default function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
           <Workspaces gdkmonitor={gdkmonitor} />
         </box>
         <box $type="center">
-          <DateTime format="%H:%M - %A %d" />
+          <revealer
+            revealChild={mediaPlayerWidgetIsVisible((v) => !v)}
+            transitionType={Gtk.RevealerTransitionType.SLIDE_DOWN}
+          >
+            <DateTime format="%H:%M - %A %d" />
+          </revealer>
+          <revealer
+            revealChild={mediaPlayerWidgetIsVisible}
+            transitionType={Gtk.RevealerTransitionType.SLIDE_DOWN}
+          >
+            <MediaPlayer />
+          </revealer>
         </box>
         <box $type="end" spacing={4}>
           <Tray />

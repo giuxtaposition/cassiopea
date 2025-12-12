@@ -30,6 +30,7 @@
       apps
       bluetooth
       notifd
+      cava
     ];
 
     extraPackages =
@@ -39,6 +40,7 @@
         pkgs.wl-gammarelay-rs
         pkgs.upower
         pkgs.networkmanager
+        pkgs.libcava
       ];
   in {
     packages.${system} = {
