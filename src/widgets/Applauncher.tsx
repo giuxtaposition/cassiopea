@@ -94,23 +94,25 @@ export default function Applauncher({
           placeholderText="Search..."
         />
         <Gtk.Separator visible={list((l) => l.length > 0)} />
-        <box orientation={Gtk.Orientation.VERTICAL}>
-          <For each={list}>
-            {(app) => (
-              <button onClicked={() => launch(app)} class="menubutton">
-                <box class="applauncher-item">
-                  <image iconName={app.iconName} pixelSize={20} />
-                  <label
-                    class="applauncher-item-label"
-                    label={app.name}
-                    maxWidthChars={40}
-                    wrap
-                  />
-                </box>
-              </button>
-            )}
-          </For>
-        </box>
+        <Gtk.ScrolledWindow minContentHeight={300} maxContentHeight={300}>
+          <box orientation={Gtk.Orientation.VERTICAL}>
+            <For each={list}>
+              {(app) => (
+                <button onClicked={() => launch(app)} class="menubutton">
+                  <box class="applauncher-item">
+                    <image iconName={app.iconName} pixelSize={20} />
+                    <label
+                      class="applauncher-item-label"
+                      label={app.name}
+                      maxWidthChars={40}
+                      wrap
+                    />
+                  </box>
+                </button>
+              )}
+            </For>
+          </box>
+        </Gtk.ScrolledWindow>
       </box>
     </window>
   )
