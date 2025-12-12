@@ -30,4 +30,33 @@ window#bar {
       }
     }
   }
+
+  .quick-settings-button {
+    background-color: colors.$overlay;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+
+    &:hover {
+      background-color: color.adjust(colors.$overlay, $lightness: 10%);
+    }
+
+    button {
+      all: unset;
+    }
+
+    label {
+      padding-left: 0.25rem;
+      padding-right: 0.5rem;
+    }
+
+    image {
+      background-color: color.adjust(colors.$accent, $lightness: -30%);
+      color: colors.$base;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      &.active {
+        background-color: colors.$accent;
+      }
+    }
+  }
 }

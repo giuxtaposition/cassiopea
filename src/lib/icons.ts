@@ -34,4 +34,8 @@ export const icons = {
     reboot: "reboot-symbolic",
   },
   settings: "settings-symbolic",
+  nightLight: {
+    enabled: "moon-symbolic",
+    disabled: "sun-symbolic",
+  },
 }
