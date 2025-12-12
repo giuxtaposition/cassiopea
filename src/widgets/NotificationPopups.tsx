@@ -2,7 +2,7 @@ import app from "ags/gtk4/app"
 import { Astal, Gdk, Gtk } from "ags/gtk4"
 import AstalNotifd from "gi://AstalNotifd"
 import Notification from "./Notification"
-import { createBinding, For, createState, onCleanup } from "ags"
+import { For, createState, onCleanup } from "ags"
 import { WindowName } from "../utils/window"
 
 const windowName: WindowName = "notification-popups"

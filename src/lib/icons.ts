@@ -38,4 +38,8 @@ export const icons = {
     enabled: "moon-symbolic",
     disabled: "sun-symbolic",
   },
+  notifications: {
+    enabled: "bell-symbolic",
+    disabled: "bell-off-symbolic",
+  },
 }

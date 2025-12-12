@@ -3,6 +3,7 @@ import { IconButton } from "../components/IconButton"
 import { icons } from "../lib/icons"
 import { rebootSystem, shutdownSystem } from "../utils/powermenu"
 import { NightLightButton } from "./NightLightButton"
+import { DoNotDisturbButton } from "./DoNotDisturbButton"
 
 export function QuickSettings() {
   return (
@@ -30,8 +31,9 @@ export function QuickSettings() {
               />
             </box>
           </centerbox>
-          <box>
+          <box spacing={8}>
             <NightLightButton />
+            <DoNotDisturbButton />
           </box>
         </box>
       }
