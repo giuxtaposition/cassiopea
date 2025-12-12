@@ -9,6 +9,7 @@ export function IconButton({
   visible = true,
   $popover: $popover,
   tooltip,
+  size = 20,
 }: {
   iconName: string | Accessor<string>
   popoverContent?: GObject.Object
@@ -16,11 +17,12 @@ export function IconButton({
   visible?: boolean | Accessor<boolean>
   $popover?: (self: Gtk.Popover) => void
   tooltip?: string | Accessor<string>
+  size?: number
 }) {
   if (popoverContent) {
     return (
       <menubutton class="icon-button" visible={visible} tooltipText={tooltip}>
-        <image iconName={iconName} pixelSize={20} />
+        <image iconName={iconName} pixelSize={size} />
         <popover $={$popover}>{popoverContent}</popover>
       </menubutton>
     )
@@ -33,7 +35,7 @@ export function IconButton({
       visible={visible}
       tooltipText={tooltip}
     >
-      <image iconName={iconName} pixelSize={20} />
+      <image iconName={iconName} pixelSize={size} />
     </button>
   )
 }

@@ -10,6 +10,7 @@ import { WifiIndicator } from "./WifiIndicator"
 import { AudioOutputIndicator } from "./AudioOutputIndicator"
 import { Workspaces } from "./Workspaces"
 import { ScreenSharingIndicator } from "./ScreenSharingIndicator"
+import { QuickSettings } from "./QuickSettings"
 
 const windowName: WindowName = "bar"
 
@@ -49,6 +50,7 @@ export default function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
           <WifiIndicator />
           <AudioOutputIndicator />
           <BatteryIndicator />
+          <QuickSettings />
         </box>
       </centerbox>
     </window>

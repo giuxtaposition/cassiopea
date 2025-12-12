@@ -29,4 +29,9 @@ export const icons = {
     muted: "volume-muted-symbolic",
   },
   screenSharing: "screen-sharing-symbolic",
+  powermenu: {
+    shutdown: "shutdown-symbolic",
+    reboot: "reboot-symbolic",
+  },
+  settings: "settings-symbolic",
 }
