@@ -91,6 +91,7 @@ export default function Applauncher({
           class="entry"
           $={(ref) => (searchentry = ref)}
           onNotifyText={({ text }) => search(text)}
+          onActivate={() => launch(list.peek()[0])}
           placeholderText="Search..."
         />
         <Gtk.Separator visible={list((l) => l.length > 0)} />
