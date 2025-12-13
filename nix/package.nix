@@ -14,6 +14,7 @@ in
     nativeBuildInputs = with pkgs; [
       wrapGAppsHook3
       gobject-introspection
+      makeWrapper
       ags.packages.${system}.default
     ];
 
@@ -26,6 +27,9 @@ in
       mkdir -p $out/share
       cp -r * $out/share
       ags bundle ${entry} $out/bin/${pname} -d "SRC='$out/share'"
+
+      wrapProgram $out/bin/${pname} \
+      --prefix PATH : ${pkgs.lib.makeBinPath extraPackages}
 
       runHook postInstall
     '';
