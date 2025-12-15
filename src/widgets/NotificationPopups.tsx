@@ -2,7 +2,7 @@ import app from "ags/gtk4/app"
 import { Astal, Gdk, Gtk } from "ags/gtk4"
 import AstalNotifd from "gi://AstalNotifd"
 import Notification from "./Notification"
-import { For, createState, onCleanup } from "ags"
+import { For, createBinding, createState, onCleanup } from "ags"
 import { WindowName } from "../utils/window"
 
 const windowName: WindowName = "notification-popups"
@@ -14,6 +14,7 @@ export default function NotificationPopups({
 }) {
   let win: Astal.Window
   const notifd = AstalNotifd.get_default()
+  const doNotDisturb = createBinding(notifd, "dont_disturb")
 
   const [notifications, setNotifications] = createState(
     new Array<AstalNotifd.Notification>(),
@@ -47,7 +48,7 @@ export default function NotificationPopups({
       name={windowName}
       class={windowName}
       gdkmonitor={gdkmonitor}
-      visible={notifications((ns) => ns.length > 0)}
+      visible={notifications((ns) => ns.length > 0) && doNotDisturb((v) => !v)}
       anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT}
       application={app}
     >
