@@ -49,4 +49,5 @@ export const icons = {
     previous: "media-backward-symbolic",
   },
   dot: "dot-symbolic",
+  close: "close-symbolic",
 }

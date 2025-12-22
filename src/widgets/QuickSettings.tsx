@@ -4,6 +4,7 @@ import { icons } from "../lib/icons"
 import { rebootSystem, shutdownSystem } from "../utils/powermenu"
 import { NightLightButton } from "./NightLightButton"
 import { DoNotDisturbButton } from "./DoNotDisturbButton"
+import NotificationHistory from "./NotificationHistory"
 
 export function QuickSettings() {
   return (
@@ -35,6 +36,7 @@ export function QuickSettings() {
             <NightLightButton />
             <DoNotDisturbButton />
           </box>
+          <NotificationHistory />
         </box>
       }
     />

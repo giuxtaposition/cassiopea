@@ -3,6 +3,7 @@ import Gdk from "gi://Gdk?version=4.0"
 import GLib from "gi://GLib"
 import AstalNotifd from "gi://AstalNotifd"
 import Pango from "gi://Pango"
+import { icons } from "../lib/icons"
 
 function isIcon(icon?: string | null) {
   const iconTheme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default()!)
@@ -15,6 +16,13 @@ function fileExists(path: string) {
 
 function time(time: number, format = "%H:%M") {
   return GLib.DateTime.new_from_unix_local(time).format(format)!
+}
+
+function formatAppIcon(appIcon?: string) {
+  if (appIcon?.toLowerCase().includes("screenshot")) {
+    return "accessories-screenshot"
+  }
+  return appIcon
 }
 
 function urgency(n: AstalNotifd.Notification) {
@@ -32,9 +40,15 @@ function urgency(n: AstalNotifd.Notification) {
 
 interface NotificationProps {
   notification: AstalNotifd.Notification
+  deleteNotification?: (id: number) => void
 }
 
-export default function Notification({ notification: n }: NotificationProps) {
+export default function Notification({
+  notification: n,
+  deleteNotification,
+}: NotificationProps) {
+  console.log("n.appIcon", n.appIcon)
+  console.log("n.desktopEntry", n.desktopEntry)
   return (
     <box
       widthRequest={400}
@@ -45,8 +59,8 @@ export default function Notification({ notification: n }: NotificationProps) {
         {(n.appIcon || isIcon(n.desktopEntry)) && (
           <image
             class="app-icon"
-            visible={Boolean(n.appIcon || n.desktopEntry)}
-            iconName={n.appIcon || n.desktopEntry}
+            visible={Boolean(formatAppIcon(n.appIcon) || n.desktopEntry)}
+            iconName={formatAppIcon(n.appIcon) || n.desktopEntry}
           />
         )}
         <label
@@ -61,8 +75,12 @@ export default function Notification({ notification: n }: NotificationProps) {
           halign={Gtk.Align.END}
           label={time(n.time)}
         />
-        <button onClicked={() => n.dismiss()}>
-          <image iconName="window-close-symbolic" />
+        <button
+          onClicked={() =>
+            deleteNotification ? deleteNotification(n.id) : n.dismiss()
+          }
+        >
+          <image iconName={icons.close} />
         </button>
       </box>
       <Gtk.Separator visible />
